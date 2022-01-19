@@ -1,0 +1,47 @@
+.mainTitle{
+
+}
+
+.mainTitle span{
+  display: inline-block;
+  animation: letterJump 2.2s;
+  animation-iteration-count: infinite;
+  font-size: 9vw;
+  font-family: 'gameria';
+  background: url(./../../assets/images/stone-texture.jpeg);
+  -webkit-background-clip: text;
+  text-shadow: 2px 4px #0a070212;
+  filter: drop-shadow(6px 0px 4px #000);
+  color: #848484b8;
+  -webkit-text-stroke: 1px #000000;
+}
+
+.mainTitle span:nth-child(1){
+  animation-delay: 0.1s;
+}
+
+.mainTitle span:nth-child(2){
+  animation-delay: 0.15s;
+}
+
+.mainTitle span:nth-child(3){
+  animation-delay: 0.2s;
+}
+
+.mainTitle span:nth-child(4){
+  animation-delay: 0.25s;
+}
+
+.mainTitle span:nth-child(5){
+  animation-delay: 0.3s;
+}
+
+.mainTitle span:nth-child(6){
+  animation-delay: 0.35s;
+}
+
+@keyframes letterJump{
+  0%   {transform: translateY(0px);}
+  18%  {transform: translateY(-10px);}
+  36% {transform: translateY(0px);}
+}

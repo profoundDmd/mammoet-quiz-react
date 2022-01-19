@@ -1,11 +1,16 @@
-import './App.css';
+import './App.scss';
+import Button from "./components/Button/Button";
+import MainTitle from "./components/MainTitle/MainTitle";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-          <h1>Testing</h1>
-      </header>
+    <div className="start">
+        <div className="startContent">
+            <MainTitle/>
+            <Button text="START" type="stone" clickEvent={() => {
+                console.log("clicked");
+            }}/>
+        </div>
     </div>
   );
 }
