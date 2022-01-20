@@ -56,15 +56,36 @@ html{
 }
 
 body{
+  margin: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.quizScreen{
   background-color: var(--main-bg-color);
   background: var(--main-bg-color) url("./assets/images/bgGroundNoCloud.png");
   background-repeat: repeat-x;
   background-position: right;
   background-position-y: bottom;
-  margin: 0;
-  overflow: hidden;
+  top: 0;
+}
+
+.dragonScreen{
+  background: var(--main-bg-color) url("./assets/images/darkCave.jpg");
+  background-repeat: repeat-x;
+  background-position: right;
+  background-position-y: bottom;
+  top: 100%;
+}
+
+.screen{
+  position: absolute;
   width: 100%;
   height: 100%;
+  left: 0;
+  margin: 0;
+  overflow: hidden;
 }
 
 /*********************************** fonts */
