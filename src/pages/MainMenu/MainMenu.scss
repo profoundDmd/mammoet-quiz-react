@@ -6,5 +6,31 @@
   left: 50%;
   top: 45%;
   margin-left: -280px;
-  transition: 3s ease;
+  transition: 0.85s ease;
+  display: flex;
+  flex-direction: column;
+  padding-top: 75px;
+}
+
+.menuButtons{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  top: 35px;
+}
+
+.title{
+  text-align: center;
+  text-shadow: 2px 4px #0a070212;
+  font-family: 'gameria';
+  filter: drop-shadow(6px 0px 4px #000);
+  background: url("./../../assets/images/stone-texture.jpeg");
+  -webkit-background-clip: text;
+  background-size: inherit;
+  color: #848484b8;
+  letter-spacing: 2px;
+  -webkit-text-stroke: 1px #000000;
+  font-size: 78pt;
 }

@@ -2,21 +2,19 @@ import React, {useState} from 'react';
 import Title from "../../components/Title/Title";
 import Button from "../../components/Button/Button";
 import "./MainMenu.scss"
+import {animated } from 'react-spring'
 
-const MainMenu = ({mainMenuMarginTop}) => {
-    const animationEnded = () => {
-        console.log("ended!");
-    }
+const MainMenu = ({styles, setStyles}) => {
 
     return (
-        <div className="mainMenu" style={{marginTop: mainMenuMarginTop}} onAnimationEnd={animationEnded}>
+        <animated.div style={styles} className="mainMenu">
             <Title text="Menu" size="big"/>
             <div className="menuButtons">
-                <Button text="Home" type="stone" clickEvent={() => console.log("")}/>
+                <Button text="Home" type="stone" clickEvent={() => setStyles.start({marginTop: "-70%" })}/>
                 <Button text="Microscoop" type="stone" clickEvent={() => console.log("")} />
                 <Button text="Quiz" type="wood" clickEvent={() => console.log("")} />
             </div>
-        </div>
+        </animated.div>
     );
 };
 

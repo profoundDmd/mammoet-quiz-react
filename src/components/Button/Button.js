@@ -30,7 +30,7 @@ const Button = ({text, type, clickEvent}) => {
     }
 
     return (
-        <button className={"mainButton " + buttonType()} onClick={ () => {
+        <button className={"mainButton " + buttonType()} onMouseDown={ () => {
             playSound();
             clickEvent();
         }}>
