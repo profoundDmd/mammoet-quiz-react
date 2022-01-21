@@ -4,13 +4,21 @@ import Button from "../../components/Button/Button";
 import "./MainMenu.scss"
 import {animated } from 'react-spring'
 
-const MainMenu = ({styles, setStyles}) => {
+const MainMenu = ({mainMenuStyles, setStartScreenOnScreen, setMainMenuOnScreen}) => {
 
     return (
-        <animated.div style={styles} className="mainMenu">
+        <animated.div style={mainMenuStyles} className="mainMenu">
             <Title text="Menu" size="big"/>
             <div className="menuButtons">
-                <Button text="Home" type="stone" clickEvent={() => setStyles.start({marginTop: "-70%" })}/>
+                <Button text="Home" type="stone" clickEvent={() => {
+                    setStartScreenOnScreen(startScreenOnScreen => !startScreenOnScreen);
+                    setMainMenuOnScreen(mainMenuOnScreen => !mainMenuOnScreen);
+                    /*
+                    toggleStartScreen();
+                    setTimeout(() => {
+                        setMainMenuStyles.start({marginTop: "-270px" });
+                    }, 850);*/
+                }}/>
                 <Button text="Microscoop" type="stone" clickEvent={() => console.log("")} />
                 <Button text="Quiz" type="wood" clickEvent={() => console.log("")} />
             </div>

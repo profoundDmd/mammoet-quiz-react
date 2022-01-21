@@ -12,17 +12,33 @@ function App() {
     bgMusic.loop = true;
     bgMusic.volume = bgMusicVolume;
 
-    const [mainMenuStyles, setMainMenuStyles] = useSpring(()=> ({ marginTop: "-70%"}));
-    const [startScreenOpacity, setOpacity] = useState(1);
-    const [startScreenDisplay, setDisplay] = useState("flex");
+    const [startScreenOnScreen, setStartScreenOnScreen] = useState(true);
+    const startScreenProps = useSpring({
+        opacity: startScreenOnScreen ? 1 : 0,
+    });
 
-    togglestartscreen-methode hier zetten en doorgeven aan mainmenu
+    const [mainMenuOnScreen, setMainMenuOnScreen] = useState(false);
+    const mainMenuProps = useSpring({
+        marginTop: mainMenuOnScreen ? "-270px" : "-70%"
+    });
 
+/*
+    const toggleStartScreen = () => {
+      if(startScreenDisplay === "none"){
+          setDisplay("flex");
+          setTimeout(() => setOpacity(1), 10);
+      }else{
+          setOpacity(0);
+          setTimeout(() => setDisplay("none"), 1500);
+      }
+    }
+*/
+    console.log("startScreenprops:" + startScreenProps);
   return (
       <div>
           <div className="quizScreen screen">
-              <StartScreen bgMusic={bgMusic} setStyles={setMainMenuStyles}/>
-              <MainMenu styles={mainMenuStyles} setStyles={setMainMenuStyles}/>
+              <StartScreen bgMusic={bgMusic} startScreenProps={startScreenProps} setStartScreenOnScreen={setStartScreenOnScreen} setMainMenuOnScreen={setMainMenuOnScreen}/>
+              <MainMenu mainMenuProps={mainMenuProps} setStartScreenOnScreen={setStartScreenOnScreen} setMainMenuOnScreen={setMainMenuOnScreen}/>
           </div>
           <div className="dragonScreen screen">
 
