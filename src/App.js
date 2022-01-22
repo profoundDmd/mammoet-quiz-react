@@ -19,8 +19,18 @@ function App() {
 
     const [mainMenuOnScreen, setMainMenuOnScreen] = useState(false);
     const mainMenuProps = useSpring({
-        marginTop: mainMenuOnScreen ? "-270px" : "-70%"
+        marginTop: mainMenuOnScreen ? "-270px" : "-70%",
+        onStart: () => {
+            console.log("on start");
+        },
+        onRest: () => {
+            console.log("on rest");
+        }
     });
+
+    const r = () => {
+
+    }
 
 /*
     const toggleStartScreen = () => {
@@ -33,7 +43,6 @@ function App() {
       }
     }
 */
-    console.log("startScreenprops:" + startScreenProps);
   return (
       <div>
           <div className="quizScreen screen">
@@ -41,11 +50,8 @@ function App() {
               <MainMenu mainMenuProps={mainMenuProps} setStartScreenOnScreen={setStartScreenOnScreen} setMainMenuOnScreen={setMainMenuOnScreen}/>
           </div>
           <div className="dragonScreen screen">
-
           </div>
       </div>
-
-
   );
 }
 

@@ -4,23 +4,29 @@ import Button from "../../components/Button/Button";
 import "./MainMenu.scss"
 import {animated } from 'react-spring'
 
-const MainMenu = ({mainMenuStyles, setStartScreenOnScreen, setMainMenuOnScreen}) => {
+const MainMenu = ({mainMenuProps, setStartScreenOnScreen, setMainMenuOnScreen}) => {
+    const goToStartScreen = () => {
+        setMainMenuOnScreen(mainMenuOnScreen => !mainMenuOnScreen);
+        setTimeout(() => {
+            setStartScreenOnScreen(startScreenOnScreen => !startScreenOnScreen);
+        }, 850);
+    }
+
+    const goToMicroscope = () => {
+
+    }
+
+    const goToQuiz = () => {
+
+    }
 
     return (
-        <animated.div style={mainMenuStyles} className="mainMenu">
+        <animated.div style={mainMenuProps} className="mainMenu">
             <Title text="Menu" size="big"/>
             <div className="menuButtons">
-                <Button text="Home" type="stone" clickEvent={() => {
-                    setStartScreenOnScreen(startScreenOnScreen => !startScreenOnScreen);
-                    setMainMenuOnScreen(mainMenuOnScreen => !mainMenuOnScreen);
-                    /*
-                    toggleStartScreen();
-                    setTimeout(() => {
-                        setMainMenuStyles.start({marginTop: "-270px" });
-                    }, 850);*/
-                }}/>
-                <Button text="Microscoop" type="stone" clickEvent={() => console.log("")} />
-                <Button text="Quiz" type="wood" clickEvent={() => console.log("")} />
+                <Button text="Home" type="stone" clickEvent={goToStartScreen}/>
+                <Button text="Microscoop" type="stone" clickEvent={goToMicroscope} />
+                <Button text="Quiz" type="wood" clickEvent={goToQuiz} />
             </div>
         </animated.div>
     );
