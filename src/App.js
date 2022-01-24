@@ -5,8 +5,13 @@ import happyBackgroundMusic from './assets/sounds/happyBackgroundMusic.mp3'
 
 import {useState} from "react";
 import {useSpring} from "react-spring";
+import {CSSTransition} from "react-transition-group";
+import Microscope from "./components/Microscope/Microscope";
 
 function App() {
+    const [inProp, setInProp] = useState(false);
+
+
     const [bgMusicVolume, setBgMusicVolume] = useState(1);
     const bgMusic = new Audio(happyBackgroundMusic);
     bgMusic.loop = true;
@@ -48,6 +53,7 @@ function App() {
           <div className="quizScreen screen">
               <StartScreen bgMusic={bgMusic} startScreenProps={startScreenProps} setStartScreenOnScreen={setStartScreenOnScreen} setMainMenuOnScreen={setMainMenuOnScreen}/>
               <MainMenu mainMenuProps={mainMenuProps} setStartScreenOnScreen={setStartScreenOnScreen} setMainMenuOnScreen={setMainMenuOnScreen}/>
+              <Microscope/>
           </div>
           <div className="dragonScreen screen">
           </div>
