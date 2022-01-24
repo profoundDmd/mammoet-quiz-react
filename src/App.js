@@ -5,8 +5,8 @@ import happyBackgroundMusic from './assets/sounds/happyBackgroundMusic.mp3'
 
 import {useState} from "react";
 import {useSpring} from "react-spring";
-import {CSSTransition} from "react-transition-group";
 import Microscope from "./components/Microscope/Microscope";
+import Quiz from "./components/Quiz/Quiz";
 
 function App() {
     const [inProp, setInProp] = useState(false);
@@ -33,27 +33,34 @@ function App() {
         }
     });
 
-    const r = () => {
+    const [microscopeOnScreen, setMicroscopeOnScreen] = useState(false);
+    const microscopeProps = useSpring({
+        opacity: microscopeOnScreen ? 1 : 0,
+    });
 
-    }
+    const [quizOnScreen, setQuizOnScreen] = useState(false);
+    const quizProps = useSpring({
+        opacity: quizOnScreen ? 1 : 0,
+    });
 
-/*
-    const toggleStartScreen = () => {
-      if(startScreenDisplay === "none"){
-          setDisplay("flex");
-          setTimeout(() => setOpacity(1), 10);
-      }else{
-          setOpacity(0);
-          setTimeout(() => setDisplay("none"), 1500);
-      }
-    }
-*/
+    /*
+        const toggleStartScreen = () => {
+          if(startScreenDisplay === "none"){
+              setDisplay("flex");
+              setTimeout(() => setOpacity(1), 10);
+          }else{
+              setOpacity(0);
+              setTimeout(() => setDisplay("none"), 1500);
+          }
+        }
+    */
   return (
       <div>
           <div className="quizScreen screen">
               <StartScreen bgMusic={bgMusic} startScreenProps={startScreenProps} setStartScreenOnScreen={setStartScreenOnScreen} setMainMenuOnScreen={setMainMenuOnScreen}/>
-              <MainMenu mainMenuProps={mainMenuProps} setStartScreenOnScreen={setStartScreenOnScreen} setMainMenuOnScreen={setMainMenuOnScreen}/>
-              <Microscope/>
+              <MainMenu mainMenuProps={mainMenuProps} setStartScreenOnScreen={setStartScreenOnScreen} setMainMenuOnScreen={setMainMenuOnScreen} setMicroscopeOnScreen={setMicroscopeOnScreen} setQuizOnScreen={setQuizOnScreen}/>
+              <Microscope microscopeProps={microscopeProps} setMicroscopeOnScreen={setMicroscopeOnScreen} setMainMenuOnScreen={setMainMenuOnScreen}/>
+              <Quiz quizProps={quizProps} setQuizOnScreen={setQuizOnScreen} setMainMenuOnScreen={setMainMenuOnScreen}/>
           </div>
           <div className="dragonScreen screen">
           </div>

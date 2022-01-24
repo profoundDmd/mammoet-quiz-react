@@ -1,13 +1,14 @@
 import React from 'react';
 import Webcam from "react-webcam";
 import "./Microscope.scss"
+import {animated } from 'react-spring'
 
-const Microscope = () => {
+const Microscope = ({microscopeProps, setMicroscopeOnScreen, setMainMenuOnScreen}) => {
     return (
-        <div className="microscope">
+        <animated.div style={microscopeProps} className="microscope">
             <h2>Webcam</h2>
             <Webcam/>
-        </div>
+        </animated.div>
     );
 };
 

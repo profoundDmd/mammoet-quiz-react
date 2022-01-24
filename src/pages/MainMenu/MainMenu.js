@@ -3,8 +3,9 @@ import Title from "../../components/Title/Title";
 import Button from "../../components/Button/Button";
 import "./MainMenu.scss"
 import {animated } from 'react-spring'
+import microscope from "../../components/Microscope/Microscope";
 
-const MainMenu = ({mainMenuProps, setStartScreenOnScreen, setMainMenuOnScreen}) => {
+const MainMenu = ({mainMenuProps, setStartScreenOnScreen, setMainMenuOnScreen, setMicroscopeOnScreen, setQuizOnScreen}) => {
     const goToStartScreen = () => {
         setMainMenuOnScreen(mainMenuOnScreen => !mainMenuOnScreen);
         setTimeout(() => {
@@ -13,11 +14,16 @@ const MainMenu = ({mainMenuProps, setStartScreenOnScreen, setMainMenuOnScreen}) 
     }
 
     const goToMicroscope = () => {
-
+        setMainMenuOnScreen(mainMenuOnScreen => !mainMenuOnScreen);
+        setTimeout(() => {
+            setMicroscopeOnScreen(microscopeOnScreen => !microscopeOnScreen);
+        }, 850);
     }
 
     const goToQuiz = () => {
-
+        setTimeout(() => {
+            setQuizOnScreen(quizOnScreen => !quizOnScreen);
+        }, 850);
     }
 
     return (
