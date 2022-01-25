@@ -23,21 +23,8 @@ function App() {
         opacity: startScreenOnScreen ? 1 : 0,
     });
 
-    const [shakeAnimation, setShakeAnimation] = useState("");
     const [mainMenuOnScreen, setMainMenuOnScreen] = useState(false);
-    const mainMenuProps = useSpring({
-        marginTop: mainMenuOnScreen ? "-270px" : "-1200px",
-        config: {
-            duration: 2100,
-            easing: easings.easeInOutQuart,
-        },
-        onRest: () => {
-            if(mainMenuOnScreen){
-                new Audio(stoneFall).play();
-                setShakeAnimation("shake");
-            }
-        },
-    });
+    const [mainMenuProps, setMainMenuProps] = useSpring(() => ({marginTop: mainMenuOnScreen ? "-270px" : "-1200px"}));
 
     const [microscopeOnScreen, setMicroscopeOnScreen] = useState(false);
     const microscopeProps = useSpring({
@@ -62,11 +49,12 @@ function App() {
           }
         }
     */
+
   return (
       <div>
           <div className="quizScreen screen">
               <StartScreen bgMusic={bgMusic} startScreenProps={startScreenProps} setStartScreenOnScreen={setStartScreenOnScreen} setMainMenuOnScreen={setMainMenuOnScreen}/>
-              <MainMenu mainMenuProps={mainMenuProps} shakeAnimation={shakeAnimation} setStartScreenOnScreen={setStartScreenOnScreen} setMainMenuOnScreen={setMainMenuOnScreen} setMicroscopeOnScreen={setMicroscopeOnScreen} setQuizOnScreen={setQuizOnScreen}/>
+              <MainMenu mainMenuProps={mainMenuProps} setMainMenuProps={setMainMenuProps} mainMenuOnScreen={mainMenuOnScreen} setStartScreenOnScreen={setStartScreenOnScreen} setMainMenuOnScreen={setMainMenuOnScreen} setMicroscopeOnScreen={setMicroscopeOnScreen} setQuizOnScreen={setQuizOnScreen}/>
               <Microscope microscopeProps={microscopeProps} setMicroscopeOnScreen={setMicroscopeOnScreen} setMainMenuOnScreen={setMainMenuOnScreen}/>
               <Quiz quizProps={quizProps} setQuizOnScreen={setQuizOnScreen} setMainMenuOnScreen={setMainMenuOnScreen}/>
 

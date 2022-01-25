@@ -16,7 +16,6 @@ const Microscope = ({microscopeProps, setMicroscopeOnScreen, setMainMenuOnScreen
 
     return (
         <animated.div style={microscopeProps} className="microscope">
-            { show? <Webcam className="microscopeCam"/> : ""}
             <Button text="Terug" type="stone" clickEvent={goToMainMenu} />
         </animated.div>
     );

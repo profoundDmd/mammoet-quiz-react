@@ -2,9 +2,12 @@ import React, {useState} from 'react';
 import Title from "../../components/Title/Title";
 import Button from "../../components/Button/Button";
 import "./MainMenu.scss"
-import {animated } from 'react-spring'
+import {animated, easings, useSpring} from 'react-spring'
+import stoneFall from "../../assets/sounds/stoneFall.mp3";
 
-const MainMenu = ({mainMenuProps, shakeAnimation, setStartScreenOnScreen, setMainMenuOnScreen, setMicroscopeOnScreen, setQuizOnScreen}) => {
+const MainMenu = ({mainMenuProps, setMainMenuProps, mainMenuOnScreen, setStartScreenOnScreen, setMainMenuOnScreen, setMicroscopeOnScreen, setQuizOnScreen}) => {
+    const [shakeAnimation, setShakeAnimation] = useState("");
+
     const goToStartScreen = () => {
         setMainMenuOnScreen(mainMenuOnScreen => !mainMenuOnScreen);
         setTimeout(() => {
@@ -21,6 +24,19 @@ const MainMenu = ({mainMenuProps, shakeAnimation, setStartScreenOnScreen, setMai
 
     const goToQuiz = () => {
         setMainMenuOnScreen(mainMenuOnScreen => !mainMenuOnScreen);
+        setMainMenuProps.start({
+            marginTop: mainMenuOnScreen ? "-270px" : "-1200px",
+            config: {
+                duration: 2100,
+                easing: easings.easeInOutQuart,
+            },
+            onRest: () => {
+                if(mainMenuOnScreen){
+                    new Audio(stoneFall).play();
+                    setShakeAnimation("shake");
+                }
+            },
+        });
         setTimeout(() => {
             setQuizOnScreen(quizOnScreen => !quizOnScreen);
         }, 1000);
