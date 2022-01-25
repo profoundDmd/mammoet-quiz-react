@@ -3,31 +3,31 @@ import Title from "../../components/Title/Title";
 import Button from "../../components/Button/Button";
 import "./MainMenu.scss"
 import {animated } from 'react-spring'
-import microscope from "../../components/Microscope/Microscope";
 
-const MainMenu = ({mainMenuProps, setStartScreenOnScreen, setMainMenuOnScreen, setMicroscopeOnScreen, setQuizOnScreen}) => {
+const MainMenu = ({mainMenuProps, shakeAnimation, setStartScreenOnScreen, setMainMenuOnScreen, setMicroscopeOnScreen, setQuizOnScreen}) => {
     const goToStartScreen = () => {
         setMainMenuOnScreen(mainMenuOnScreen => !mainMenuOnScreen);
         setTimeout(() => {
             setStartScreenOnScreen(startScreenOnScreen => !startScreenOnScreen);
-        }, 850);
+        }, 1000);
     }
 
     const goToMicroscope = () => {
         setMainMenuOnScreen(mainMenuOnScreen => !mainMenuOnScreen);
         setTimeout(() => {
             setMicroscopeOnScreen(microscopeOnScreen => !microscopeOnScreen);
-        }, 850);
+        }, 1000);
     }
 
     const goToQuiz = () => {
+        setMainMenuOnScreen(mainMenuOnScreen => !mainMenuOnScreen);
         setTimeout(() => {
             setQuizOnScreen(quizOnScreen => !quizOnScreen);
-        }, 850);
+        }, 1000);
     }
 
     return (
-        <animated.div style={mainMenuProps} className="mainMenu">
+        <animated.div style={mainMenuProps} className={`mainMenu ${shakeAnimation}`}>
             <Title text="Menu" size="big"/>
             <div className="menuButtons">
                 <Button text="Home" type="stone" clickEvent={goToStartScreen}/>

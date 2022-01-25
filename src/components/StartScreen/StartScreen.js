@@ -11,11 +11,11 @@ const StartScreen = ({bgMusic, startScreenProps, setStartScreenOnScreen, setMain
         setStartScreenOnScreen(startScreenOnScreen => !startScreenOnScreen);
         setTimeout(() => {
             setMainMenuOnScreen(mainMenuOnScreen => !mainMenuOnScreen);
-        }, 850);
+        }, 1000);
     }
 
     return (
-        <animated.div className="startScreen" style={startScreenProps} onAnimationEnd={() => console.log("eending!!!")}>
+        <animated.div className="startScreen" style={startScreenProps}>
             <div className="startContent">
                 <MainTitle/>
                 <Button text="START" type="stone" clickEvent={startQuizPressed}/>

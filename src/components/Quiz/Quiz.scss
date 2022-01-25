@@ -1,8 +1,11 @@
 .quiz{
-  position: relative;
-  width: 800px;
+  position: absolute;
+  width: 1500px;
   height: 800px;
+  left: 50%;
+  top: 50%;
+  margin-left: -750px;
+  margin-top: -500px;
   background: green;
-  top: 150px;
-  left: 500px;
+
 }
