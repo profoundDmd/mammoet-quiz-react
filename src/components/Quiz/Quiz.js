@@ -2,9 +2,9 @@ import React from 'react';
 import "./Quiz.scss";
 import {animated } from 'react-spring'
 
-const Quiz = ({quizProps, setMainMenuOnScreen, setQuizOnScreen}) => {
+const Quiz = ({quizSpringProps, setMainMenuOnScreen, setQuizOnScreen}) => {
     return (
-        <animated.div style={quizProps} className="quiz">
+        <animated.div style={quizSpringProps} className="quiz">
             <h2>Quiz</h2>
         </animated.div>
     );

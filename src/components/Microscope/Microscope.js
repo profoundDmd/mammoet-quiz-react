@@ -4,7 +4,7 @@ import "./Microscope.scss"
 import {animated } from 'react-spring'
 import Button from "../Button/Button";
 
-const Microscope = ({microscopeProps, setMicroscopeOnScreen, setMainMenuOnScreen}) => {
+const Microscope = ({microscopeSpringProps, setMicroscopeOnScreen, setMainMenuOnScreen}) => {
     const show = false;
 
     const goToMainMenu = () => {
@@ -15,7 +15,7 @@ const Microscope = ({microscopeProps, setMicroscopeOnScreen, setMainMenuOnScreen
     }
 
     return (
-        <animated.div style={microscopeProps} className="microscope">
+        <animated.div style={microscopeSpringProps} className="microscope">
             <Button text="Terug" type="stone" clickEvent={goToMainMenu} />
         </animated.div>
     );

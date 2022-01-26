@@ -5,8 +5,7 @@ import "./MainMenu.scss"
 import {animated, easings, useSpring} from 'react-spring'
 import stoneFall from "../../assets/sounds/stoneFall.mp3";
 
-const MainMenu = ({mainMenuProps, setMainMenuProps, mainMenuOnScreen, setStartScreenOnScreen, setMainMenuOnScreen, setMicroscopeOnScreen, setQuizOnScreen}) => {
-    const [shakeAnimation, setShakeAnimation] = useState("");
+const MainMenu = ({mainMenuSpringProps, setMainMenuProps, mainMenuOnScreen, setStartScreenOnScreen, setMainMenuOnScreen, setMicroscopeOnScreen, setQuizOnScreen}) => {
 
     const goToStartScreen = () => {
         setMainMenuOnScreen(mainMenuOnScreen => !mainMenuOnScreen);
@@ -24,26 +23,13 @@ const MainMenu = ({mainMenuProps, setMainMenuProps, mainMenuOnScreen, setStartSc
 
     const goToQuiz = () => {
         setMainMenuOnScreen(mainMenuOnScreen => !mainMenuOnScreen);
-        setMainMenuProps.start({
-            marginTop: mainMenuOnScreen ? "-270px" : "-1200px",
-            config: {
-                duration: 2100,
-                easing: easings.easeInOutQuart,
-            },
-            onRest: () => {
-                if(mainMenuOnScreen){
-                    new Audio(stoneFall).play();
-                    setShakeAnimation("shake");
-                }
-            },
-        });
         setTimeout(() => {
             setQuizOnScreen(quizOnScreen => !quizOnScreen);
         }, 1000);
     }
 
     return (
-        <animated.div style={mainMenuProps} className={`mainMenu ${shakeAnimation}`}>
+        <animated.div style={mainMenuSpringProps} className={`mainMenu ${shakeAnimation}`}>
             <Title text="Menu" size="big"/>
             <div className="menuButtons">
                 <Button text="Home" type="stone" clickEvent={goToStartScreen}/>
