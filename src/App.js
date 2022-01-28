@@ -45,7 +45,6 @@ function App() {
         quizSpringProps
     }
 
-
     /*
         const toggleStartScreen = () => {
           if(startScreenDisplay === "none"){
@@ -60,11 +59,37 @@ function App() {
 
   return (
       <div>
+
           <div className="quizScreen screen">
-              <StartScreen bgMusic={bgMusic} startScreenSpringProps={startScreenSpringProps} setStartScreenOnScreen={setStartScreenOnScreen} setMainMenuOnScreen={setMainMenuOnScreen}/>
-              <MainMenu mainMenuSpringProps={mainMenuSpringProps} setMainMenuSpringProps={setMainMenuSpringProps} mainMenuOnScreen={mainMenuOnScreen} setStartScreenOnScreen={setStartScreenOnScreen} setMainMenuOnScreen={setMainMenuOnScreen} setMicroscopeOnScreen={setMicroscopeOnScreen} setQuizOnScreen={setQuizOnScreen}/>
-              <Microscope microscopeSpringProps={microscopeSpringProps} setMicroscopeOnScreen={setMicroscopeOnScreen} setMainMenuOnScreen={setMainMenuOnScreen}/>
-              <Quiz quizSpringProps={quizSpringProps} setQuizOnScreen={setQuizOnScreen} setMainMenuOnScreen={setMainMenuOnScreen}/>
+              <StartScreen
+                  bgMusic={bgMusic}
+                  startScreenSpringProps={startScreenSpringProps}
+                  setStartScreenOnScreen={setStartScreenOnScreen}
+                  setMainMenuOnScreen={setMainMenuOnScreen}
+              />
+
+              <MainMenu
+                  mainMenuSpringProps={mainMenuSpringProps}
+                  mainMenuOnScreen={mainMenuOnScreen}
+                  setMainMenuSpringProps={setMainMenuSpringProps}
+                  setStartScreenOnScreen={setStartScreenOnScreen}
+                  setMainMenuOnScreen={setMainMenuOnScreen}
+                  setMicroscopeOnScreen={setMicroscopeOnScreen}
+                  setQuizOnScreen={setQuizOnScreen}
+              />
+
+              <Microscope
+                  microscopeSpringProps={microscopeSpringProps}
+                  setMicroscopeOnScreen={setMicroscopeOnScreen}
+                  setMainMenuOnScreen={setMainMenuOnScreen}
+              />
+
+              <Quiz
+                  quizSpringProps={quizSpringProps}
+                  setQuizOnScreen={setQuizOnScreen}
+                  setMainMenuOnScreen={setMainMenuOnScreen}
+              />
+
           </div>
           <div className="dragonScreen screen">
           </div>

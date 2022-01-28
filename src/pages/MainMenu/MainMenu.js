@@ -29,7 +29,7 @@ const MainMenu = ({mainMenuSpringProps, setMainMenuProps, mainMenuOnScreen, setS
     }
 
     return (
-        <animated.div style={mainMenuSpringProps} className={`mainMenu ${shakeAnimation}`}>
+        <animated.div style={mainMenuSpringProps} className={`mainMenu`}>
             <Title text="Menu" size="big"/>
             <div className="menuButtons">
                 <Button text="Home" type="stone" clickEvent={goToStartScreen}/>
