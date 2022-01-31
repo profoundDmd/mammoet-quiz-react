@@ -38,13 +38,6 @@ const StartScreen = ({bgMusic, startScreenOnScreen, setStartScreenOnScreen, setM
     //https://stackoverflow.com/questions/67351865/how-to-animate-the-filtering-of-a-list-using-usetransition-in-react-spring
     return (
         <>
-            {
-                transitions((style, item) =>
-                    item ?
-                        <animated.div>
-                            <MainTitle />
-                        </animated.div>
-            }
             <Button type="stone" text="Start2" clickEvent={startPressed} />
         </>
     );
