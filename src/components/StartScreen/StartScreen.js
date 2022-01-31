@@ -2,11 +2,9 @@ import React, {useState} from 'react';
 import MainTitle from "../MainTitle/MainTitle";
 import Button from "../Button/Button";
 import "./StartScreen.scss";
-import {animated, easings} from 'react-spring'
-import stoneFall from "../../assets/sounds/stoneFall.mp3";
-import {CSSTransition} from "react-transition-group";
+import {animated, easings, useTransition} from 'react-spring'
 
-const StartScreen = ({bgMusic, startScreenSpringProps, setStartScreenOnScreen, setMainMenuOnScreen}) => {
+const StartScreen = ({bgMusic, startScreenOnScreen, setStartScreenOnScreen, setMainMenuOnScreen}) => {
 
     const startPressed = () => {
         bgMusic.play();
@@ -26,23 +24,29 @@ const StartScreen = ({bgMusic, startScreenSpringProps, setStartScreenOnScreen, s
             },
         });
 */
-        setTimeout(() => {
-            setMainMenuOnScreen(mainMenuOnScreen => !mainMenuOnScreen);
-        }, 1000);
     }
-    const [inProp, setInProp] = useState(false);
-    return (
 
-    <div>
-        <CSSTransition in={inProp} timeout={1000} classNames="my-node">
-            <div>
-                {"I'll receive my-node-* classes"}
-            </div>
-        </CSSTransition>
-        <button type="button" onClick={() => setInProp(!inProp)}>
-            Click to Enter
-        </button>
-    </div>
+    const transitions = useTransition(startScreenOnScreen, {
+        from: { opacity: 1, marginTop: -100},
+        enter: { opacity: 1, marginTop: 0 },
+        leave: { opacity: 0 },
+        config: {
+            duration: 1000
+        }
+    });
+
+    //https://stackoverflow.com/questions/67351865/how-to-animate-the-filtering-of-a-list-using-usetransition-in-react-spring
+    return (
+        <>
+            {
+                transitions((style, item) =>
+                    item ?
+                        <animated.div>
+                            <MainTitle />
+                        </animated.div>
+            }
+            <Button type="stone" text="Start2" clickEvent={startPressed} />
+        </>
     );
 };
 

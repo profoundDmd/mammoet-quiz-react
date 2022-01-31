@@ -19,9 +19,6 @@ function App() {
     bgMusic.volume = bgMusicVolume;
 
     const [startScreenOnScreen, setStartScreenOnScreen] = useState(true);
-    const startScreenSpringProps = useSpring({
-        opacity: startScreenOnScreen ? 1 : 0,
-    });
 
     const [mainMenuOnScreen, setMainMenuOnScreen] = useState(false);
     const [mainMenuSpringProps, setMainMenuSpringProps] = useSpring(() => ({
@@ -63,7 +60,7 @@ function App() {
           <div className="quizScreen screen">
               <StartScreen
                   bgMusic={bgMusic}
-                  startScreenSpringProps={startScreenSpringProps}
+                  startScreenOnScreen={startScreenOnScreen}
                   setStartScreenOnScreen={setStartScreenOnScreen}
                   setMainMenuOnScreen={setMainMenuOnScreen}
               />
