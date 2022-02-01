@@ -4,7 +4,7 @@ import MainMenu from "./pages/MainMenu/MainMenu";
 import happyBackgroundMusic from './assets/sounds/happyBackgroundMusic.mp3'
 import stoneFall from './assets/sounds/stoneFall.mp3'
 
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useSpring, easings, animated, useTransition} from "react-spring";
 import Microscope from "./components/Microscope/Microscope";
 import Quiz from "./components/Quiz/Quiz";
@@ -18,38 +18,75 @@ function App() {
     bgMusic.loop = true;
     bgMusic.volume = bgMusicVolume;
 
-    const [isStartScreenOnScreen, setStartScreenOnScreen] = useState(true);
+    useEffect(() => {
+        console.log("render");
+    });
 
-    const transition = useTransition(isStartScreenOnScreen, {
+    /* state */
+    const [isStartScreenOnScreen, setStartScreenOnScreen] = useState(true);
+    const [isMicroscopeOnScreen, setMicroscopeOnScreen] = useState(false);
+    const [isMainMenuOnScreen, setMainMenuOnScreen] = useState(false);
+
+
+    /* startscreen */
+    const transitionStartScreen = useTransition(isStartScreenOnScreen, {
         from: { opacity: 0},
         enter: { opacity: 1},
         leave: { opacity: 0},
         config: {
-            duration: 1000
+            duration: 1200
         },
         onRest: () => {
             if(!isStartScreenOnScreen){
-                console.log("slide in main menu");
+                setMainMenuOnScreen( true);
             }
         }
     });
+    const startScreen = transitionStartScreen((style, item) => item
+        ? <StartScreen style={style} clickEvent={() => setStartScreenOnScreen(!isStartScreenOnScreen)} />
+        : ""
+    );
 
-    const startScreen = transition((style, item) => item?
-        <animated.div style={style}>
-            <MainTitle />
-            <Button type="stone" text="Welkom!!" clickEvent={() => setStartScreenOnScreen(!isStartScreenOnScreen)} />
-        </animated.div>
+
+    /* microscope */
+    const transitionMicroscope = useTransition(isMicroscopeOnScreen, {
+        from: { opacity: 0},
+        enter: { opacity: 1},
+        leave: { opacity: 0},
+        config: {
+            duration: 1200
+        },
+    });
+    const microscope = transitionMicroscope((style, item) => item
+        ? <Microscope style={style} setMicroscopeOnScreen={setMicroscopeOnScreen} setMainMenuOnScreen={setMainMenuOnScreen}/>
+        : ""
+    );
+
+    /* mainmenu */
+    const transitionMainMenu = useTransition(isMainMenuOnScreen, {
+        from: { marginTop: "-60%" },
+        enter: { marginTop: "-15%" },
+        leave: { marginTop: "-60%" },
+        config: {
+            duration: 1600,
+            easing: easings.easeInOutQuart
+        },
+    });
+    const mainMenu = transitionMainMenu((style, item) => item
+        ? <MainMenu style={style} setStartScreenOnScreen={setStartScreenOnScreen} setMainMenuOnScreen={setMainMenuOnScreen} setMicroscopeOnScreen={setMicroscopeOnScreen}/>
         : ""
     );
 
     return (
-      <div>
+      <>
           <div className="quizScreen screen">
               {startScreen}
+              {mainMenu}
+              {microscope}
           </div>
           <div className="dragonScreen screen">
           </div>
-      </div>
+      </>
     );
 }
 

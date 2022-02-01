@@ -7,8 +7,8 @@
   animation: letterJump 2.2s;
   animation-iteration-count: infinite;
   font-size: 9vw;
-  font-family: 'gameria';
-  background: url(./../../assets/images/stone-texture.jpeg);
+  font-family: 'gameria', sans-serif;
+  background: url("./../../assets/images/stoneTexture.jpeg");
   -webkit-background-clip: text;
   text-shadow: 2px 4px #0a070212;
   filter: drop-shadow(6px 0px 4px #000);

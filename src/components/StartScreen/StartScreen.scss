@@ -7,3 +7,13 @@
   justify-content: center;
   text-align: center;
 }
+
+.startScreenContent{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}

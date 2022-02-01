@@ -12,12 +12,14 @@ button{
 }
 
 .stone{
-  background: url("./../../assets/images/button.png") no-repeat center center;
+  background: url("./../../assets/images/stoneButton.png") no-repeat center center;
   background-size: contain;
-  font-family: stonism;
+  font-family: stonism, sans-serif;
 
 }
 
 .wood{
-
+  background: url("./../../assets/images/titleWood.png") no-repeat center center;
+  background-size: contain;
+  font-family: stonism, sans-serif;
 }

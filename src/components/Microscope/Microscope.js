@@ -4,18 +4,17 @@ import "./Microscope.scss"
 import {animated } from 'react-spring'
 import Button from "../Button/Button";
 
-const Microscope = ({microscopeSpringProps, setMicroscopeOnScreen, setMainMenuOnScreen}) => {
-    const show = false;
-
+const Microscope = ({style, setMicroscopeOnScreen, setMainMenuOnScreen}) => {
     const goToMainMenu = () => {
-        setMicroscopeOnScreen(microscopeOnScreen => !microscopeOnScreen);
+        setMicroscopeOnScreen(false);
         setTimeout(() => {
-            setMainMenuOnScreen(startScreenOnScreen => !startScreenOnScreen);
-        }, 1000);
+            setMainMenuOnScreen(mainMenuOnScreen => !mainMenuOnScreen);
+        }, 1200);
     }
 
     return (
-        <animated.div style={microscopeSpringProps} className="microscope">
+        <animated.div style={style} className="microscope">
+            <Webcam className="microscopeCam"/>
             <Button text="Terug" type="stone" clickEvent={goToMainMenu} />
         </animated.div>
     );
