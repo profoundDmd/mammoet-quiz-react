@@ -18,14 +18,11 @@ function App() {
     bgMusic.loop = true;
     bgMusic.volume = bgMusicVolume;
 
-    useEffect(() => {
-        console.log("render");
-    });
-
     /* state */
     const [isStartScreenOnScreen, setStartScreenOnScreen] = useState(true);
     const [isMicroscopeOnScreen, setMicroscopeOnScreen] = useState(false);
     const [isMainMenuOnScreen, setMainMenuOnScreen] = useState(false);
+    const [isQuizOnScreen, setQuizOnScreen] = useState(false);
 
 
     /* startscreen */
@@ -47,6 +44,20 @@ function App() {
         : ""
     );
 
+    /* mainmenu */
+    const transitionMainMenu = useTransition(isMainMenuOnScreen, {
+        from: { marginTop: "-60%" },
+        enter: { marginTop: "-15%" },
+        leave: { marginTop: "-60%" },
+        config: {
+            duration: 1600,
+            easing: easings.easeInOutQuart
+        },
+    });
+    const mainMenu = transitionMainMenu((style, item) => item
+        ? <MainMenu style={style} setStartScreenOnScreen={setStartScreenOnScreen} setMainMenuOnScreen={setMainMenuOnScreen} setMicroscopeOnScreen={setMicroscopeOnScreen} setQuizOnScreen={setQuizOnScreen}/>
+        : ""
+    );
 
     /* microscope */
     const transitionMicroscope = useTransition(isMicroscopeOnScreen, {
@@ -62,18 +73,17 @@ function App() {
         : ""
     );
 
-    /* mainmenu */
-    const transitionMainMenu = useTransition(isMainMenuOnScreen, {
-        from: { marginTop: "-60%" },
-        enter: { marginTop: "-15%" },
-        leave: { marginTop: "-60%" },
+    /* quiz */
+    const transitionQuiz = useTransition(isQuizOnScreen, {
+        from: { opacity: 0},
+        enter: { opacity: 1},
+        leave: { opacity: 0},
         config: {
-            duration: 1600,
-            easing: easings.easeInOutQuart
+            duration: 1200
         },
     });
-    const mainMenu = transitionMainMenu((style, item) => item
-        ? <MainMenu style={style} setStartScreenOnScreen={setStartScreenOnScreen} setMainMenuOnScreen={setMainMenuOnScreen} setMicroscopeOnScreen={setMicroscopeOnScreen}/>
+    const quiz = transitionQuiz((style, item) => item
+        ? <Quiz style={style} setQuizOnScreen={setQuizOnScreen} setMainMenuOnScreen={setMainMenuOnScreen}/>
         : ""
     );
 
@@ -83,6 +93,7 @@ function App() {
               {startScreen}
               {mainMenu}
               {microscope}
+              {quiz}
           </div>
           <div className="dragonScreen screen">
           </div>

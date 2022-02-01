@@ -5,7 +5,7 @@ import "./MainMenu.scss"
 import {animated, easings, useSpring} from 'react-spring'
 import stoneFall from "../../assets/sounds/stoneFall.mp3";
 
-const MainMenu = ({style, setStartScreenOnScreen, setMainMenuOnScreen, setMicroscopeOnScreen}) => {
+const MainMenu = ({style, setStartScreenOnScreen, setMainMenuOnScreen, setMicroscopeOnScreen, setQuizOnScreen}) => {
 
     const goToStartScreen = () => {
         setMainMenuOnScreen(mainMenuOnScreen => !mainMenuOnScreen);
@@ -20,21 +20,21 @@ const MainMenu = ({style, setStartScreenOnScreen, setMainMenuOnScreen, setMicros
             setMicroscopeOnScreen(microscopeOnScreen => !microscopeOnScreen);
         }, 1200);
     }
-/*
+
     const goToQuiz = () => {
         setMainMenuOnScreen(mainMenuOnScreen => !mainMenuOnScreen);
         setTimeout(() => {
             setQuizOnScreen(quizOnScreen => !quizOnScreen);
-        }, 1000);
+        }, 1200);
     }
-*/
+
     return (
         <animated.div style={style} className={`mainMenu`}>
             <Title text="Menu" size="big"/>
             <div className="menuButtons">
                 <Button text="Home" type="stone" clickEvent={goToStartScreen}/>
                 <Button text="Microscoop" type="stone" clickEvent={goToMicroscope} />
-                <Button text="Quiz" type="wood"  />
+                <Button text="Quiz" type="wood" clickEvent={goToQuiz}/>
             </div>
         </animated.div>
     );

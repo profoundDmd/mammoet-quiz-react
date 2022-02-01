@@ -1,10 +1,19 @@
 .quiz{
   position: absolute;
-  width: 1500px;
-  height: 800px;
+  width: 1300px;
+  height: 590px;
   left: 50%;
   top: 50%;
-  margin-left: -750px;
-  margin-top: -500px;
+  margin-left: -650px;
+  margin-top: -300px;
   border: 1px solid green;
+  background-image: url("./../../assets/images/bigFrame.png");
+  background-position-x: center;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  border: none;
+}
+
+.wallPainting{
+  background-image: url("./../../assets/images/wallPainting.jpeg");
 }
