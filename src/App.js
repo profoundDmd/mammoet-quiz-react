@@ -2,6 +2,7 @@ import './App.scss';
 import StartScreen from "./components/StartScreen/StartScreen";
 import MainMenu from "./pages/MainMenu/MainMenu";
 import happyBackgroundMusic from './assets/sounds/happyBackgroundMusic.mp3'
+import stoneGrind from './assets/sounds/stoneGrind.mp3'
 import stoneFall from './assets/sounds/stoneFall.mp3'
 
 import {useEffect, useState} from "react";
@@ -13,16 +14,20 @@ import Button from "./components/Button/Button";
 
 function App() {
 
-    const [bgMusicVolume, setBgMusicVolume] = useState(1);
-    const bgMusic = new Audio(happyBackgroundMusic);
-    bgMusic.loop = true;
-    bgMusic.volume = bgMusicVolume;
 
     /* state */
     const [isStartScreenOnScreen, setStartScreenOnScreen] = useState(true);
     const [isMicroscopeOnScreen, setMicroscopeOnScreen] = useState(false);
     const [isMainMenuOnScreen, setMainMenuOnScreen] = useState(false);
     const [isQuizOnScreen, setQuizOnScreen] = useState(false);
+
+    /* Sounds */
+    const [bgMusicVolume, setBgMusicVolume] = useState(1);
+    const bgMusic = new Audio(happyBackgroundMusic);
+    bgMusic.loop = true;
+
+    const stoneGrindSE = new Audio(stoneGrind);
+    const stoneFallSE = new Audio(stoneFall);
 
 
     /* startscreen */
@@ -40,7 +45,7 @@ function App() {
         }
     });
     const startScreen = transitionStartScreen((style, item) => item
-        ? <StartScreen style={style} clickEvent={() => setStartScreenOnScreen(!isStartScreenOnScreen)} />
+        ? <StartScreen style={style} setStartScreenOnScreen={setStartScreenOnScreen} bgMusic={bgMusic} />
         : ""
     );
 
@@ -53,6 +58,19 @@ function App() {
             duration: 1600,
             easing: easings.easeInOutQuart
         },
+        onRest: () => {
+            stoneGrindSE.pause();
+            if(isMainMenuOnScreen){
+                setTimeout(() => {
+                    stoneFallSE.play();
+                }, 100);
+
+            }
+        },
+
+        onStart: () => {
+            stoneGrindSE.play();
+        }
     });
     const mainMenu = transitionMainMenu((style, item) => item
         ? <MainMenu style={style} setStartScreenOnScreen={setStartScreenOnScreen} setMainMenuOnScreen={setMainMenuOnScreen} setMicroscopeOnScreen={setMicroscopeOnScreen} setQuizOnScreen={setQuizOnScreen}/>

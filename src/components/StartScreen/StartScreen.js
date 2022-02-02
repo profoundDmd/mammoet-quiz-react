@@ -4,7 +4,12 @@ import Button from "../Button/Button";
 import "./StartScreen.scss";
 import {animated, easings, useTransition} from 'react-spring'
 
-const StartScreen = ({style, clickEvent}) => {
+const StartScreen = ({style, setStartScreenOnScreen, bgMusic}) => {
+
+    const clickEvent = () => {
+        setStartScreenOnScreen(setStartScreenOnScreen = !setStartScreenOnScreen);
+        bgMusic.play();
+    }
 
     //https://stackoverflow.com/questions/67351865/how-to-animate-the-filtering-of-a-list-using-usetransition-in-react-spring
     return (
