@@ -118,10 +118,10 @@ function App() {
               {quiz}*/}
               <AnimatePresence exitBeforeEnter>
                   <Routes location={location} key={location.pathname}>
-                      <Route exact path="/" element={<StartScreen />} />
-                      <Route path="/mainmenu" element={<MainMenu />} />
-                      <Route path="/microscope" element={<Microscope />} />
-                      <Route path="/quiz" element={<Quiz />} />
+                      <Route exact path="/" element={<StartScreen bgMusic={bgMusic} />} />
+                      <Route path="/mainmenu" element={<MainMenu  />} />
+                      <Route path="/microscope" element={<Microscope  />} />
+                      <Route path="/quiz" element={<Quiz  />} />
                   </Routes>
               </AnimatePresence>
           </div>

@@ -5,7 +5,7 @@ import YouTube from 'react-youtube';
 import {motion} from "framer-motion";
 
 
-const Quiz = ({style, setQuizOnScreen, setMainMenuOnScreen}) => {
+const Quiz = ({}) => {
     const opts = {
         height: '390', width: '640', playerVars: {autoplay: 1,}, origin: 'http://localhost:3000',
     };

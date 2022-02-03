@@ -3,39 +3,51 @@ import Title from "../../components/Title/Title";
 import Button from "../../components/Button/Button";
 import "./MainMenu.scss"
 import {motion} from "framer-motion";
+import { useNavigate } from 'react-router-dom';
 import {animated, easings, useSpring} from 'react-spring'
 import stoneFall from "../../assets/sounds/stoneFall.mp3";
+import {useHistory} from "react-router-dom";
+import stoneGrind from "../../assets/sounds/stoneGrind.mp3";
 
-const MainMenu = ({style, setStartScreenOnScreen, setMainMenuOnScreen, setMicroscopeOnScreen, setQuizOnScreen}) => {
+const MainMenu = () => {
+    const navigate = useNavigate();
+    const stoneGrindSE = new Audio(stoneGrind);
+    const stoneFallSE = new Audio(stoneFall);
+    const [shake, setShake] = useState("");
 
     const goToStartScreen = () => {
-        setMainMenuOnScreen(mainMenuOnScreen => !mainMenuOnScreen);
-        setTimeout(() => {
-            setStartScreenOnScreen(startScreenOnScreen => !startScreenOnScreen)
-        }, 1200);
+        navigate("/")
     }
 
     const goToMicroscope = () => {
-        setMainMenuOnScreen(mainMenuOnScreen => !mainMenuOnScreen);
-        setTimeout(() => {
-            setMicroscopeOnScreen(microscopeOnScreen => !microscopeOnScreen);
-        }, 1200);
+        navigate("/microscope")
     }
 
     const goToQuiz = () => {
-        setMainMenuOnScreen(mainMenuOnScreen => !mainMenuOnScreen);
+        navigate("/quiz")
+    }
+
+    const onAnimationStart = () => {
+        stoneGrindSE.play();
+    }
+
+    const onAnimationComplete = () => {
+        stoneGrindSE.pause();
         setTimeout(() => {
-            setQuizOnScreen(quizOnScreen => !quizOnScreen);
-        }, 1200);
+            stoneFallSE.play();
+            setShake("shake");
+        }, 100);
     }
 
     return (
         <motion.div
-            initial={{opacity: 0, marginTop: "-60%",  }}
-            animate={{opacity: 1, marginTop: "-15%" }}
-            exit={{opacity: 0, marginTop: "-60%" }}
-            transition={{duration: 1.4}}
-            className={`mainMenu`}
+            initial={{marginTop: "-60%",  }}
+            animate={{marginTop: "-15%" }}
+            exit={{marginTop: "-60%" }}
+            transition={{duration: 1.8}}
+            onAnimationStart={onAnimationStart}
+            onAnimationComplete={onAnimationComplete}
+            className={`mainMenu ${shake}`}
         >
             <Title text="Menu" size="big"/>
             <div className="menuButtons">

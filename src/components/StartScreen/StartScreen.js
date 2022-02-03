@@ -3,14 +3,18 @@ import MainTitle from "../MainTitle/MainTitle";
 import Button from "../Button/Button";
 import "./StartScreen.scss";
 import {motion} from "framer-motion";
+import { useNavigate } from 'react-router-dom';
 
 import {animated, easings, useTransition} from 'react-spring'
+import {useHistory} from "react-router-dom";
 
-const StartScreen = ({style, setStartScreenOnScreen, bgMusic}) => {
+const StartScreen = ({bgMusic}) => {
+    const navigate = useNavigate();
 
     const clickEvent = () => {
-        setStartScreenOnScreen(setStartScreenOnScreen = !setStartScreenOnScreen);
+        console.log("sdmlfk");
         bgMusic.play();
+        navigate("/mainmenu")
     }
 
     //https://stackoverflow.com/questions/67351865/how-to-animate-the-filtering-of-a-list-using-usetransition-in-react-spring
