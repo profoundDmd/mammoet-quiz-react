@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import "./Quiz.scss";
 import {animated } from 'react-spring';
 import YouTube from 'react-youtube';
+import {motion} from "framer-motion";
+
 
 const Quiz = ({style, setQuizOnScreen, setMainMenuOnScreen}) => {
     const opts = {
@@ -18,11 +20,17 @@ const Quiz = ({style, setQuizOnScreen, setMainMenuOnScreen}) => {
     }
 
     return (
-        <animated.div style={style} className={`quiz ${wallPaintingBackground}`}>
+        <motion.div
+            initial={{opacity: 0,  }}
+            animate={{opacity: 1,  }}
+            exit={{opacity: 0, }}
+            transition={{duration: 1.4}}
+            className={`quiz ${wallPaintingBackground}`}
+        >
             <img src="" />
             <h2>Quiz</h2>
             <YouTube videoId="2g811Eo7K8U" opts={opts} onReady={onReady} onEnd={onEnd}/>;
-        </animated.div>
+        </motion.div>
     );
 };
 
