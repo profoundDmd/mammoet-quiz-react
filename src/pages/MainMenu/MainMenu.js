@@ -31,11 +31,13 @@ const MainMenu = () => {
         stoneGrindSE.play();
     }
 
-    const onAnimationComplete = () => {
+    const onAnimationComplete = (event) => {
         stoneGrindSE.pause();
         setTimeout(() => {
-            stoneFallSE.play();
-            setShake("shake");
+            if(event.marginTop != "-60%"){
+                stoneFallSE.play();
+                setShake("shake");
+            }
         }, 100);
     }
 

@@ -1,5 +1,8 @@
 .quiz{
   position: relative;
+}
+
+.quizContent{
 
 }
 
@@ -9,6 +12,9 @@
 
 .bigFrame{
   width: 1700px;
+  height: 800px;
+  background-image: url("./../../assets/images/bigFrame.png");
+  background-size: cover;
 }
 
 .frameRibbon{

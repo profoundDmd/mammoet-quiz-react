@@ -29,19 +29,19 @@ const Quiz = () => {
             transition={{duration: 1.4}}
             className={`quiz ${wallPaintingBackground}`}
         >
-            <img src={bigFrame} className="bigFrame" alt=""/>
+            {/*<img src={bigFrame} className="bigFrame" alt=""/>*/}
+            <div className="bigFrame">
+                <motion.div className="ytIntro">
+                    <YouTube videoId="2g811Eo7K8U" opts={opts} onReady={onReady} onEnd={onEnd}/>;
+                </motion.div>
+                <motion.div className="textIntro">
+
+                </motion.div>
+                <motion.div className="quizQuestions">
+
+                </motion.div>
+            </div>
             <Ribbon text="Quiz" classNames="frameRibbon"/>
-            <motion.div className="ytIntro">
-
-            </motion.div>
-            <motion.div className="textIntro">
-
-            </motion.div>
-            <motion.div className="quizQuestions">
-
-            </motion.div>
-
-            <YouTube videoId="2g811Eo7K8U" opts={opts} onReady={onReady} onEnd={onEnd}/>;
         </motion.div>
     );
 };
