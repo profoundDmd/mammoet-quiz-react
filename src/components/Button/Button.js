@@ -2,8 +2,9 @@ import React from 'react';
 import './Button.scss'
 import stoneClick from '../../assets/sounds/stoneButtonClick.mp3'
 import woodClick from '../../assets/sounds/woodButtonClick.mp3'
+import {motion} from "framer-motion";
 
-const Button = ({text, type, clickEvent}) => {
+const Button = ({text, type, clickEvent, className}) => {
     const buttonType = () => {
         switch (type){
             case "stone":
@@ -29,13 +30,18 @@ const Button = ({text, type, clickEvent}) => {
         }
     }
 
+    const onTapStart = () => {
+        playSound();
+    }
+
+    const onTap = () => {
+        clickEvent();
+    }
+
     return (
-        <button className={"mainButton " + buttonType()} onMouseDown={ () => {
-            playSound();
-            clickEvent();
-        }}>
+        <motion.button onTapStart={onTapStart} whileTap={{ scale: 0.95 }} onTap={onTap} className={"mainButton " + className + " " + buttonType()}>
             {text}
-        </button>
+        </motion.button>
     );
 };
 

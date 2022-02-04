@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import "./Quiz.scss";
-import {animated } from 'react-spring';
 import YouTube from 'react-youtube';
 import {motion} from "framer-motion";
+import bigFrame from "./../../assets/images/bigFrame.png"
+import Ribbon from "./Ribbon/Ribbon";
 
-
-const Quiz = ({}) => {
+const Quiz = () => {
     const opts = {
         height: '390', width: '640', playerVars: {autoplay: 1,}, origin: 'http://localhost:3000',
     };
@@ -27,8 +27,8 @@ const Quiz = ({}) => {
             transition={{duration: 1.4}}
             className={`quiz ${wallPaintingBackground}`}
         >
-            <img src="" />
-            <h2>Quiz</h2>
+            <img src={bigFrame} />
+            <Ribbon text="Quiz" classNames="frameRibbon"/>
             <YouTube videoId="2g811Eo7K8U" opts={opts} onReady={onReady} onEnd={onEnd}/>;
         </motion.div>
     );

@@ -5,13 +5,11 @@ import happyBackgroundMusic from './assets/sounds/happyBackgroundMusic.mp3'
 import stoneGrind from './assets/sounds/stoneGrind.mp3'
 import stoneFall from './assets/sounds/stoneFall.mp3'
 
-import {useEffect, useState} from "react";
-import {useSpring, easings, animated, useTransition} from "react-spring";
+import {useState} from "react";
+import {easings, useTransition} from "react-spring";
 import Microscope from "./components/Microscope/Microscope";
 import Quiz from "./components/Quiz/Quiz";
-import MainTitle from "./components/MainTitle/MainTitle";
-import Button from "./components/Button/Button";
-import {Route, BrowserRouter as Router, Routes, useLocation, Link} from "react-router-dom";
+import {Route, Routes, useLocation} from "react-router-dom";
 import {AnimatePresence} from "framer-motion";
 
 function App() {
@@ -112,10 +110,6 @@ function App() {
     return (
       <>
           <div className="quizScreen screen">
-              {/*{startScreen}
-              {mainMenu}
-              {microscope}
-              {quiz}*/}
               <AnimatePresence exitBeforeEnter>
                   <Routes location={location} key={location.pathname}>
                       <Route exact path="/" element={<StartScreen bgMusic={bgMusic} />} />
