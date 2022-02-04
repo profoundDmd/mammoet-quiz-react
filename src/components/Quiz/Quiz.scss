@@ -1,16 +1,14 @@
 .quiz{
-  position: absolute;
-  width: 1300px;
-  height: 590px;
-  left: 50%;
-  top: 50%;
-  margin-left: -650px;
-  margin-top: -300px;
-  border: none;
+  position: relative;
+
 }
 
 .wallPainting{
   background-image: url("./../../assets/images/wallPainting.jpeg");
+}
+
+.bigFrame{
+  width: 1700px;
 }
 
 .frameRibbon{

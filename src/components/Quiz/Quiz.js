@@ -19,6 +19,8 @@ const Quiz = () => {
         console.log("end");
     }
 
+    //https://codesandbox.io/s/framer-motion-side-menu-mx2rw?from-embed=&file=/src/MenuToggle.tsx
+
     return (
         <motion.div
             initial={{opacity: 0,  }}
@@ -27,8 +29,18 @@ const Quiz = () => {
             transition={{duration: 1.4}}
             className={`quiz ${wallPaintingBackground}`}
         >
-            <img src={bigFrame} />
+            <img src={bigFrame} className="bigFrame" alt=""/>
             <Ribbon text="Quiz" classNames="frameRibbon"/>
+            <motion.div className="ytIntro">
+
+            </motion.div>
+            <motion.div className="textIntro">
+
+            </motion.div>
+            <motion.div className="quizQuestions">
+
+            </motion.div>
+
             <YouTube videoId="2g811Eo7K8U" opts={opts} onReady={onReady} onEnd={onEnd}/>;
         </motion.div>
     );

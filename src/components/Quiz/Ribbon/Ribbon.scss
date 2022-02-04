@@ -3,24 +3,26 @@
   display: grid;
   place-items: center;
   grid-template-areas: "inner-div";
+  position: absolute;
+  width: 100%;
+  top: 0;
 }
 
 .ribbonText{
   -webkit-text-stroke: 5px #da7c1b;
   font-family: 'stonism', sans-serif;
-  font-size: 90pt;
+  font-size: 80pt;
   position: absolute;
   background: -webkit-linear-gradient(#efebe9, #f1b25d);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0px 0px 6px #333);
   grid-area: inner-div;
-
 }
 
 .ribbonBg{
   transform: rotate(175deg);
   position: absolute;
   grid-area: inner-div;
-  width: 450px;
+  width: 440px;
 }
