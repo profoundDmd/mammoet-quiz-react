@@ -2,21 +2,31 @@
   position: relative;
 }
 
-.quizContent{
-
-}
-
-.wallPainting{
-  background-image: url("./../../assets/images/wallPainting.jpeg");
-}
-
 .bigFrame{
   width: 1700px;
   height: 800px;
   background-image: url("./../../assets/images/bigFrame.png");
   background-size: cover;
+  display: flex;
+  justify-content: center;
 }
 
-.frameRibbon{
+.ytIntro{
+  display: grid;
+  place-items: center;
+  grid-template-areas: "inner-div";
+  width: 600px;
 
+  & > * {
+    grid-area: inner-div;
+  }
+
+  img{
+    max-height:100%;
+    max-width:100%;
+  }
+}
+
+.youtubeVid{
+  box-shadow: 0px 0px 10px black;
 }
