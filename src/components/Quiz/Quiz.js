@@ -3,6 +3,7 @@ import "./Quiz.scss";
 import YouTube from 'react-youtube';
 import {motion} from "framer-motion";
 import wallPainting from "./../../assets/images/wallPainting.jpeg"
+import bigFrame from "./../../assets/images/bigFrame.png"
 import Ribbon from "./Ribbon/Ribbon";
 
 const Quiz = () => {
@@ -34,8 +35,8 @@ const Quiz = () => {
             transition={{duration: 1.4}}
             className="quiz"
         >
-            {/*<img src={bigFrame} className="bigFrame" alt=""/>*/}
-            <div className="bigFrame">
+            <img src={bigFrame} className="bigFrameImage" alt=""/>
+            <div className="bigFrameContent">
                 <Ribbon text="Quiz" classNames="frameRibbon"/>
                 <motion.div className="ytIntro">
                     <YouTube videoId="2g811Eo7K8U" opts={opts} onReady={onReady} onEnd={onEnd} className="youtubeVid"/>

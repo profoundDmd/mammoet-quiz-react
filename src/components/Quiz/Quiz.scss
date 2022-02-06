@@ -1,14 +1,37 @@
 .quiz{
   position: relative;
+  display: grid;
+  place-items: center;
+  grid-template-areas: "inner-div";
 }
 
-.bigFrame{
-  width: 1700px;
+.bigFrameImage{
+  position: absolute;
+  width: 1690px;
   height: 800px;
-  background-image: url("./../../assets/images/bigFrame.png");
-  background-size: cover;
+  grid-area: inner-div;
+}
+
+.bigFrameContent{
+  width: 1560px;
+  height: 670px;
   display: flex;
   justify-content: center;
+  grid-area: inner-div;
+}
+
+.bigFrameContent::before {
+  content: "";
+  background-image: url("./../../assets/images/bgWood.jpeg");
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: 0;
+  width: 1560px;
+  height: 670px;
 }
 
 .ytIntro{
