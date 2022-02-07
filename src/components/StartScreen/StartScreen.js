@@ -1,18 +1,14 @@
-import React, {useState} from 'react';
+import React from 'react';
 import MainTitle from "../MainTitle/MainTitle";
 import Button from "../Button/Button";
 import "./StartScreen.scss";
 import {motion} from "framer-motion";
-import { useNavigate } from 'react-router-dom';
-
-import {animated, easings, useTransition} from 'react-spring'
-import {useHistory} from "react-router-dom";
+import {useNavigate} from 'react-router-dom';
 
 const StartScreen = ({bgMusic}) => {
     const navigate = useNavigate();
 
     const clickEvent = () => {
-        console.log("sdmlfk");
         bgMusic.play();
         navigate("/mainmenu")
     }

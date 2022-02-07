@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import "./Quiz.scss";
 import YouTube from 'react-youtube';
-import {motion} from "framer-motion";
+import {AnimatePresence, motion} from "framer-motion";
 import wallPainting from "./../../assets/images/wallPainting.jpeg"
 import bigFrame from "./../../assets/images/bigFrame.png"
 import Ribbon from "./Ribbon/Ribbon";
@@ -12,12 +12,14 @@ const Quiz = () => {
     };
     //const [wallPaintingBackground, setWallPaintingBackground] = useState("wallPainting");
     const [showWallPainting, setShowWallPainting] = useState(true);
+    const [showYtIntro, setShowYtIntro] = useState(true);
 
     const onReady = (event) => {
         setShowWallPainting(false);
     }
 
     const onEnd = (event) => {
+        setShowYtIntro(false);
     }
 
     const variants = {
@@ -35,24 +37,37 @@ const Quiz = () => {
             transition={{duration: 1.4}}
             className="quiz"
         >
-            <img src={bigFrame} className="bigFrameImage" alt=""/>
             <div className="bigFrameContent">
-                <Ribbon text="Quiz" classNames="frameRibbon"/>
-                <motion.div className="ytIntro">
-                    <YouTube videoId="2g811Eo7K8U" opts={opts} onReady={onReady} onEnd={onEnd} className="youtubeVid"/>
-                    <motion.img
-                        variants={variants}
-                        animate={showWallPainting ? 'show' : 'hide'}
-                        src={wallPainting}
-                    />
-                </motion.div>
+                <AnimatePresence>
+                    { showYtIntro && (
+                        <motion.div
+                            className="ytIntro"
+                            exit={{ opacity: 0, duration: 2 }}
+                        >
+                            <div className="modalBg" />
+                            <YouTube
+                                videoId="452kpneADrA"
+                                opts={opts}
+                                onReady={onReady}
+                                onEnd={onEnd}
+                                className="youtubeVid"/>
+                            <motion.img
+                                variants={variants}
+                                animate={showWallPainting ? 'show' : 'hide'}
+                                src={wallPainting}
+                            />
+                        </motion.div>
+                    )}
+                </AnimatePresence>
                 <motion.div className="textIntro">
-
+                    <h2>lorem ipsum</h2>
                 </motion.div>
                 <motion.div className="quizQuestions">
 
                 </motion.div>
             </div>
+            <img src={bigFrame} className="bigFrameImage" alt=""/>
+            <Ribbon text="Quiz" classNames="frameRibbon"/>
         </motion.div>
     );
 };

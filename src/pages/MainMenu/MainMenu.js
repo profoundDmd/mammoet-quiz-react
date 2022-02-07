@@ -3,10 +3,8 @@ import Title from "../../components/Title/Title";
 import Button from "../../components/Button/Button";
 import "./MainMenu.scss"
 import {motion} from "framer-motion";
-import { useNavigate } from 'react-router-dom';
-import {animated, easings, useSpring} from 'react-spring'
+import {useNavigate} from 'react-router-dom';
 import stoneFall from "../../assets/sounds/stoneFall.mp3";
-import {useHistory} from "react-router-dom";
 import stoneGrind from "../../assets/sounds/stoneGrind.mp3";
 
 const MainMenu = () => {
@@ -34,7 +32,7 @@ const MainMenu = () => {
     const onAnimationComplete = (event) => {
         stoneGrindSE.pause();
         setTimeout(() => {
-            if(event.marginTop != "-60%"){
+            if(event.marginTop !== "-60%"){
                 stoneFallSE.play();
                 setShake("shake");
             }

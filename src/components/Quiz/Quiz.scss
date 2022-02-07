@@ -24,12 +24,11 @@
   content: "";
   background-image: url("./../../assets/images/bgWood.jpeg");
   opacity: 0.5;
-  top: 0;
   left: 0;
-  bottom: 0;
   right: 0;
   position: absolute;
   z-index: 0;
+  display: block;
   width: 1560px;
   height: 670px;
 }
@@ -39,17 +38,21 @@
   place-items: center;
   grid-template-areas: "inner-div";
   width: 600px;
+  position: relative;
 
   & > * {
     grid-area: inner-div;
   }
 
   img{
-    max-height:100%;
-    max-width:100%;
+    height: 392px;
+    width: 640px;
+    position: relative;
+    border: none;
   }
 }
 
 .youtubeVid{
   box-shadow: 0px 0px 10px black;
+  position: relative;
 }
