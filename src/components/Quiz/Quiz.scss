@@ -10,6 +10,7 @@
   width: 1690px;
   height: 800px;
   grid-area: inner-div;
+  pointer-events: none;
 }
 
 .bigFrameContent{
@@ -18,13 +19,12 @@
   display: flex;
   justify-content: center;
   grid-area: inner-div;
-  pointer-events: none;
 }
 
 .bigFrameContent::before {
   content: "";
   background-image: url("./../../assets/images/bgWood.jpeg");
-  opacity: 0.5;
+  opacity: 0.35;
   left: 0;
   right: 0;
   position: absolute;
@@ -59,8 +59,16 @@
 }
 
 .textIntro{
+  font-family: generalFont;
   position: relative;
   width: 100%;
   padding: 130px;
   padding-bottom: 80px;
+  color: #7e4728;
+  font-size: 45pt;
+  text-shadow: 0px 0px 3px #0000008f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 55px;
 }

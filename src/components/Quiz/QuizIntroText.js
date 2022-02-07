@@ -11,14 +11,18 @@ const QuizIntroText = ({startQuizEvent}) => {
         setShowButton(true);
     }
 
+    const introText = "Hallo iedereen, welkom op de grote Mammoetquiz van het Vleeshuismuseum. Deze quiz gaat over de mammoet en de tijd waarin de mammoet leefde. Willen jullie een leuke en spannende quiz spelen? Druk op de knop om te starten!"
+
     return (
         <motion.div className="textIntro">
             <Typewriter
-                onInit={(typewriter) => {
-                    typewriter.typeString('Hello Worldies!')
-                        .callFunction(textDone)
-                        .start();
+                options={{
+                    delay: 65
                 }}
+                onInit={(typewriter) => {
+                    typewriter.typeString(`${introText}`).callFunction(textDone).start();
+                }}
+
             />
             {showButton && (
                 <motion.div

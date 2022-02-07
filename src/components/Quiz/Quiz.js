@@ -16,12 +16,15 @@ const Quiz = () => {
     const [showYtIntro, setShowYtIntro] = useState(true);
     const [showText, setShowText] = useState(false);
 
-    const onReady = (event) => {
+    const onYtIntroReady = (event) => {
         setShowWallPainting(false);
     }
 
-    const onEnd = (event) => {
-        //setShowYtIntro(false);
+    const onYtIntroEnd = (event) => {
+        setShowYtIntro(false);
+    }
+
+    const onYtIntroExitComplete = (event) => {
         setShowText(true);
     }
 
@@ -41,7 +44,7 @@ const Quiz = () => {
             className="quiz"
         >
             <div className="bigFrameContent">
-                <AnimatePresence>
+                <AnimatePresence onExitComplete={onYtIntroExitComplete}>
                     { showYtIntro && (
                         <motion.div
                             className="ytIntro"
@@ -51,8 +54,8 @@ const Quiz = () => {
                             <YouTube
                                 videoId="452kpneADrA"
                                 opts={opts}
-                                onReady={onReady}
-                                onEnd={onEnd}
+                                onReady={onYtIntroReady}
+                                onEnd={onYtIntroEnd}
                                 className="youtubeVid"/>
                             <motion.img
                                 variants={variants}
