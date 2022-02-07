@@ -5,21 +5,24 @@ import {AnimatePresence, motion} from "framer-motion";
 import wallPainting from "./../../assets/images/wallPainting.jpeg"
 import bigFrame from "./../../assets/images/bigFrame.png"
 import Ribbon from "./Ribbon/Ribbon";
+import QuizIntroText from "./QuizIntroText";
+
 
 const Quiz = () => {
     const opts = {
         height: '390', width: '640', playerVars: {autoplay: 1,}, origin: 'http://localhost:3000',
     };
-    //const [wallPaintingBackground, setWallPaintingBackground] = useState("wallPainting");
     const [showWallPainting, setShowWallPainting] = useState(true);
     const [showYtIntro, setShowYtIntro] = useState(true);
+    const [showText, setShowText] = useState(false);
 
     const onReady = (event) => {
         setShowWallPainting(false);
     }
 
     const onEnd = (event) => {
-        setShowYtIntro(false);
+        //setShowYtIntro(false);
+        setShowText(true);
     }
 
     const variants = {
@@ -59,9 +62,10 @@ const Quiz = () => {
                         </motion.div>
                     )}
                 </AnimatePresence>
-                <motion.div className="textIntro">
-                    <h2>lorem ipsum</h2>
-                </motion.div>
+                {showText && (
+                    <QuizIntroText/>
+                )}
+
                 <motion.div className="quizQuestions">
 
                 </motion.div>
