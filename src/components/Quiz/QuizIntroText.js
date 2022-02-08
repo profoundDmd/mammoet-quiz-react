@@ -6,21 +6,30 @@ import Button from "../Button/Button";
 const QuizIntroText = ({startQuizEvent}) => {
 
     const [showButton, setShowButton] = useState(false);
+    let tw;
 
     const textDone = () => {
         setShowButton(true);
     }
 
+    const btnClicked = () => {
+        tw.deleteAll(120)
+    }
+
     const introText = "Hallo iedereen, welkom op de grote Mammoetquiz van het Vleeshuismuseum. Deze quiz gaat over de mammoet en de tijd waarin de mammoet leefde. Willen jullie een leuke en spannende quiz spelen? Druk op de knop om te starten!"
+
+
 
     return (
         <motion.div className="textIntro">
             <Typewriter
                 options={{
-                    delay: 65
+                    delay: 65,
+                    cursor: " "
                 }}
                 onInit={(typewriter) => {
-                    typewriter.typeString(`${introText}`).callFunction(textDone).start();
+                    tw = typewriter;
+                    tw.typeString(`${introText}`).callFunction(textDone).start();
                 }}
 
             />
@@ -30,7 +39,7 @@ const QuizIntroText = ({startQuizEvent}) => {
                     animate={{opacity: 1,  y: 0}}
                     transition={{duration: 1}}
                 >
-                    <Button text="START" type="stone" clickEvent={startQuizEvent}/>
+                    <Button text="START" type="stone" clickEvent={btnClicked}/>
                 </motion.div>
             )}
 
