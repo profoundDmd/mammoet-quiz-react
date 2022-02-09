@@ -3,7 +3,7 @@ import "./Quiz.scss";
 import YouTube from 'react-youtube';
 import {AnimatePresence, motion} from "framer-motion";
 import wallPainting from "./../../assets/images/wallPainting.jpeg"
-import bigFrame from "./../../assets/images/bigFrame.png"
+import bigFrameBorder from "./../../assets/images/bigFrame.png"
 import Ribbon from "./Ribbon/Ribbon";
 import QuizIntroText from "./QuizIntroText";
 
@@ -28,6 +28,8 @@ const Quiz = () => {
         setShowText(true);
     }
 
+    const prepareForQuiz = () => {}
+
     const variants = {
         hide: { opacity: 0, transition: { duration: 4 } },
         show: { opacity: 1, }
@@ -46,10 +48,7 @@ const Quiz = () => {
             <div className="bigFrameContent">
                 <AnimatePresence onExitComplete={onYtIntroExitComplete}>
                     { showYtIntro && (
-                        <motion.div
-                            className="ytIntro"
-                            exit={{ opacity: 0, duration: 2 }}
-                        >
+                        <motion.div className="ytIntro" exit={{ opacity: 0, duration: 2 }}>
                             <div className="modalBg" />
                             <YouTube
                                 videoId="452kpneADrA"
@@ -65,15 +64,19 @@ const Quiz = () => {
                         </motion.div>
                     )}
                 </AnimatePresence>
-                {showText && (
-                    <QuizIntroText/>
-                )}
+                <AnimatePresence onExitComplete={prepareForQuiz}>
+                    {showText && (
+                        <motion.div exit={{ opacity: 0, duration: 2 }}>
+                            <QuizIntroText setShowText={setShowText}/>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
 
                 <motion.div className="quizQuestions">
 
                 </motion.div>
             </div>
-            <img src={bigFrame} className="bigFrameImage" alt=""/>
+            <img src={bigFrameBorder} className="bigFrameImage" alt=""/>
             <Ribbon text="Quiz" classNames="frameRibbon"/>
         </motion.div>
     );
