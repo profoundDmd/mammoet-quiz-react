@@ -2,8 +2,10 @@ import React, {useState} from 'react';
 import "./Quiz.scss";
 import YouTube from 'react-youtube';
 import {AnimatePresence, motion} from "framer-motion";
-import wallPainting from "./../../assets/images/wallPainting.jpeg"
-import bigFrameBorder from "./../../assets/images/bigFrame.png"
+import wallPainting from "./../../assets/images/wallPainting.jpeg";
+import bigFrameBorder from "./../../assets/images/bigFrame.png";
+import scoreBoard from "./../../assets/images/smallFrame.png";
+import mammoth from "./../../assets/images/mammoth.png";
 import Ribbon from "./Ribbon/Ribbon";
 import QuizIntroText from "./QuizIntroText";
 
@@ -15,6 +17,7 @@ const Quiz = () => {
     const [showWallPainting, setShowWallPainting] = useState(true);
     const [showYtIntro, setShowYtIntro] = useState(true);
     const [showText, setShowText] = useState(false);
+    const [showQuizProps, setShowQuizProps] = useState(false);
 
     const onYtIntroReady = (event) => {
         setShowWallPainting(false);
