@@ -17,7 +17,7 @@ const Mammoth = () => {
             className="mammoth quizProps"
             initial={{opacity: 0, x: -400 }}
             animate={{opacity: 1, x:0 }}
-            transition={{duration: 5.7, type: "spring"}}
+            transition={{duration: 2, type: "spring"}}
             >
                 <img src={mammoth}/>
                 <div className="eyeBlink"/>

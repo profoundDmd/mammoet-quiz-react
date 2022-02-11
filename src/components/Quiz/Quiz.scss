@@ -20,6 +20,7 @@
   justify-content: center;
   grid-area: inner-div;
   position: relative;
+  overflow: hidden;
 }
 
 .bigFrameContent::before {

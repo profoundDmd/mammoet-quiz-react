@@ -1,0 +1,28 @@
+.questionCounter{
+  position: absolute;
+  bottom: 100px;
+  right: 125px;
+  width: 250px;
+}
+
+.counter{
+  box-sizing: border-box;
+  margin: 5px;
+  padding: 6px 12px;
+  color: #a9660a;
+  border: none;
+  display: inline-block;
+  box-shadow: 0px 0px 6px -2px black;
+  background-image: url(../../../assets/images/smallFrame.png);
+  background-size: cover;
+
+  &::before{
+    content: "";
+    position: absolute;
+    width: 28px;
+    height: 15px;
+    background: #ffffff2e;
+    margin-left: -10px;
+    margin-top: -6px;
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "name": "Mammoetquiz",
+  "showYoutubeVideos" : true,
+  "questions" : [
+    {
+      "id": 1,
+      "question":"Vraag 1",
+      "answers": [
+        {
+          "id": 1,
+          "answer": "Antwoord 1",
+          "isCorrect": true
+        },{
+          "id": 2,
+          "answer": "Antwoord 2",
+          "isCorrect": false
+        },{
+          "id": 3,
+          "answer": "Antwoord 3",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "question":"Vraag 2",
+      "answers": [
+        {
+          "id": 1,
+          "answer": "Antwoord 21",
+          "isCorrect": true
+        },{
+          "id": 2,
+          "answer": "Antwoord 22",
+          "isCorrect": false
+        },{
+          "id": 3,
+          "answer": "Antwoord 23",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "question":"Vraag 3",
+      "answers": [
+        {
+          "id": 1,
+          "answer": "Antwoord 31",
+          "isCorrect": false
+        },{
+          "id": 2,
+          "answer": "Antwoord 32",
+          "isCorrect": true
+        },{
+          "id": 3,
+          "answer": "Antwoord 33",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "question":"Vraag 4",
+      "answers": [
+        {
+          "id": 1,
+          "answer": "Antwoord 41",
+          "isCorrect": true
+        },{
+          "id": 2,
+          "answer": "Antwoord 42",
+          "isCorrect": false
+        },{
+          "id": 3,
+          "answer": "Antwoord 43",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "question":"Vraag 5",
+      "answers": [
+        {
+          "id": 1,
+          "answer": "Antwoord 51",
+          "isCorrect": false
+        },{
+          "id": 2,
+          "answer": "Antwoord 52",
+          "isCorrect": false
+        },{
+          "id": 3,
+          "answer": "Antwoord 53",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "question":"Vraag 6",
+      "answers": [
+        {
+          "id": 1,
+          "answer": "Antwoord 61",
+          "isCorrect": false
+        },{
+          "id": 2,
+          "answer": "Antwoord 62",
+          "isCorrect": true
+        },{
+          "id": 3,
+          "answer": "Antwoord 63",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}

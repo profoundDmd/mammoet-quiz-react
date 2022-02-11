@@ -17,10 +17,9 @@ const Scoreboard = () => {
             className="scoreboard quizProps"
             initial={{scale: 0}}
             animate={{scale: 1}}
-            transition={{duration: 5.7, type: "spring"}}
+            transition={{duration: 1.5, type: "spring"}}
         >
             <h2>Scoreboard</h2>
-            <img src={comet}/>
         </motion.div>
     );
 };

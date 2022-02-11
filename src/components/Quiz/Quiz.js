@@ -6,7 +6,8 @@ import Ribbon from "./Ribbon/Ribbon";
 import QuizIntroText from "./QuizIntroText";
 import Scoreboard from "./Scoreboard/Scoreboard";
 import Mammoth from "./Mammoth/Mammoth";
-
+import questions from "./questions.json"
+import QuestionCounter from "./QuestionCounter/QuestionCounter";
 
 const Quiz = () => {
     const opts = {
@@ -16,6 +17,7 @@ const Quiz = () => {
     const [showYtIntro, setShowYtIntro] = useState(true);
     const [showText, setShowText] = useState(false);
     const [showQuizProps, setShowQuizProps] = useState(false);
+    const [state, setState] = useState(questions);
 
     const onYtIntroReady = (event) => {
         setShowWallPainting(false);
@@ -51,7 +53,7 @@ const Quiz = () => {
             <div className="bigFrameContent">
                 <AnimatePresence onExitComplete={onYtIntroExitComplete}>
                     { showYtIntro && (
-                        (<><Scoreboard/><Mammoth/></>)/*
+                        (<><Scoreboard/><Mammoth/><QuestionCounter questions={questions.questions}/></>)/*
                         /*
                         <motion.div className="ytIntro" exit={{ opacity: 0, duration: 2 }}>
                             <div className="modalBg" />
