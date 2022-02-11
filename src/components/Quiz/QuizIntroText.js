@@ -18,7 +18,7 @@ const QuizIntroText = ({setShowText}) => {
     const introText = "Hallo iedereen, welkom op de grote Mammoetquiz van het Vleeshuismuseum. Deze quiz gaat over de mammoet en de tijd waarin de mammoet leefde. Willen jullie een leuke en spannende quiz spelen? Druk op de knop om te starten!"
 
     return (
-        <motion.div className="textIntro">
+        <motion.div className="textIntro" exit={{ opacity: 0, duration: 5 }}>
             <Typewriter
                 options={{
                     delay: 65,
@@ -31,9 +31,9 @@ const QuizIntroText = ({setShowText}) => {
 
             {showButton && (
                 <motion.div
-                    initial={{opacity: 0,  y: 200}}
+                    initial={{opacity: 0,  y: 250}}
                     animate={{opacity: 1,  y: 0}}
-                    transition={{duration: 1}}
+                    transition={{duration: 0.7, type: "spring"}}
                 >
                     <Button text="START" type="stone" clickEvent={btnClicked}/>
                 </motion.div>

@@ -19,6 +19,7 @@
   display: flex;
   justify-content: center;
   grid-area: inner-div;
+  position: relative;
 }
 
 .bigFrameContent::before {
@@ -72,4 +73,8 @@
   align-items: center;
   gap: 55px;
   box-sizing: border-box;
+}
+
+.quizProps{
+  position: absolute;
 }

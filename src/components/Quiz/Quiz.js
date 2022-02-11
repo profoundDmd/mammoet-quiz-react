@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
 import "./Quiz.scss";
-import YouTube from 'react-youtube';
 import {AnimatePresence, motion} from "framer-motion";
-import wallPainting from "./../../assets/images/wallPainting.jpeg";
 import bigFrameBorder from "./../../assets/images/bigFrame.png";
-import scoreBoard from "./../../assets/images/smallFrame.png";
-import mammoth from "./../../assets/images/mammoth.png";
 import Ribbon from "./Ribbon/Ribbon";
 import QuizIntroText from "./QuizIntroText";
+import Scoreboard from "./Scoreboard/Scoreboard";
+import Mammoth from "./Mammoth/Mammoth";
 
 
 const Quiz = () => {
@@ -31,7 +29,9 @@ const Quiz = () => {
         setShowText(true);
     }
 
-    const prepareForQuiz = () => {}
+    const prepareForQuiz = () => {
+        setShowQuizProps(true);
+    }
 
     const variants = {
         hide: { opacity: 0, transition: { duration: 4 } },
@@ -51,6 +51,8 @@ const Quiz = () => {
             <div className="bigFrameContent">
                 <AnimatePresence onExitComplete={onYtIntroExitComplete}>
                     { showYtIntro && (
+                        (<><Scoreboard/><Mammoth/></>)/*
+                        /*
                         <motion.div className="ytIntro" exit={{ opacity: 0, duration: 2 }}>
                             <div className="modalBg" />
                             <YouTube
@@ -64,15 +66,16 @@ const Quiz = () => {
                                 animate={showWallPainting ? 'show' : 'hide'}
                                 src={wallPainting}
                             />
-                        </motion.div>
+                        </motion.div>*/
                     )}
                 </AnimatePresence>
+
                 <AnimatePresence onExitComplete={prepareForQuiz}>
-                    {showText && (
-                        <motion.div exit={{ opacity: 0, duration: 2 }}>
-                            <QuizIntroText setShowText={setShowText}/>
-                        </motion.div>
-                    )}
+                    {showText && (<QuizIntroText setShowText={setShowText}/>)}
+                </AnimatePresence>
+
+                <AnimatePresence>
+                    {showQuizProps && (<><Scoreboard/><Mammoth/></>)}
                 </AnimatePresence>
 
                 <motion.div className="quizQuestions">

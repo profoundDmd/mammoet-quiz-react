@@ -130,3 +130,9 @@ body{
   90% { transform: translateX(-5px)}
   100% { transform: translateX(5px)}
 }
+
+@keyframes eyeBlink{
+  0%  {height: 2px}
+  7% { height: 32px}
+  14% { height: 2px}
+}

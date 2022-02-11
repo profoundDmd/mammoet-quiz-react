@@ -1,0 +1,29 @@
+.mammoth{
+  transform: scaleX(-1);
+  width: 500px;
+  left: 70px;
+  top: 70px;
+
+  img{
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0px 0px 5px rgb(0, 0, 0, 0.5));
+  }
+}
+
+.eyeBlink{
+  position: absolute;
+  background: #68341c;
+  width: 22px;
+  height: 2px;
+  left: 233px;
+  top: 250px;
+  border-radius: 60%;
+  animation-name: eyeBlink;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  z-index: 999;
+  display: none;
+
+}
