@@ -19,6 +19,9 @@ const Quiz = () => {
     const [showQuizProps, setShowQuizProps] = useState(false);
     const [state, setState] = useState(questions);
 
+    const [showScoreboard, setShowScoreboard] = useState(false);
+    const [showQuestionCounter, setShowQuestionCounter] = useState(false);
+
     const onYtIntroReady = (event) => {
         setShowWallPainting(false);
     }
@@ -40,8 +43,6 @@ const Quiz = () => {
         show: { opacity: 1, }
     };
 
-    //https://codesandbox.io/s/framer-motion-side-menu-mx2rw?from-embed=&file=/src/MenuToggle.tsx
-
     return (
         <motion.div
             initial={{opacity: 0,  }}
@@ -53,7 +54,11 @@ const Quiz = () => {
             <div className="bigFrameContent">
                 <AnimatePresence onExitComplete={onYtIntroExitComplete}>
                     { showYtIntro && (
-                        (<><Scoreboard/><Mammoth/><QuestionCounter questions={questions.questions}/></>)/*
+                        (<>
+                            <Mammoth setShowScoreboard={setShowScoreboard}/>
+                            <Scoreboard setShowQuestionCounter={setShowQuestionCounter} showScoreboard={showScoreboard} />
+                            <QuestionCounter questions={questions.questions} showQuestionCounter={showQuestionCounter}/>
+                        </>)/*
                         /*
                         <motion.div className="ytIntro" exit={{ opacity: 0, duration: 2 }}>
                             <div className="modalBg" />

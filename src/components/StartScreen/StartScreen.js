@@ -13,7 +13,6 @@ const StartScreen = ({bgMusic}) => {
         navigate("/mainmenu")
     }
 
-    //https://stackoverflow.com/questions/67351865/how-to-animate-the-filtering-of-a-list-using-usetransition-in-react-spring
     return (
         <motion.div
             initial={{opacity: 0,  }}

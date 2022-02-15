@@ -3,7 +3,7 @@ import {motion} from "framer-motion";
 import "./Scoreboard.scss";
 import comet from "../../../assets/images/comet.png";
 
-const Scoreboard = () => {
+const Scoreboard = ({setShowQuestionCounter, showScoreboard}) => {
 
     const spring = {
         type: "spring",
@@ -12,15 +12,24 @@ const Scoreboard = () => {
         transition: { duration: 4300 }
     };
 
+    const onAnimationComplete = () => {
+        setShowQuestionCounter(t => !t);
+    }
+
     return (
-        <motion.div
-            className="scoreboard quizProps"
-            initial={{scale: 0}}
-            animate={{scale: 1}}
-            transition={{duration: 1.5, type: "spring"}}
-        >
-            <h2>Scoreboard</h2>
-        </motion.div>
+        <>
+            {showScoreboard && (
+            <motion.div
+                className="scoreboard quizProps"
+                initial={{scale: 0}}
+                animate={{scale: 1}}
+                transition={{duration: 0.8, type: "spring"}}
+                onAnimationComplete={onAnimationComplete}
+            >
+                <h2>Scoreboard</h2>
+            </motion.div>
+            )}
+        </>
     );
 };
 
