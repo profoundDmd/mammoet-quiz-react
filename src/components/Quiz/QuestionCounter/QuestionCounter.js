@@ -4,18 +4,18 @@ import "./QuestionCounter.scss"
 
 const QuestionCounter = ({showQuestionCounter, questions, currentQuestion}) => {
     const variants = {
-        hidden: {opacity: 0},
+        hidden: {scale: 0},
         show: {
-            opacity: 1,
+            scale: 1,
             transition: {
-                staggerChildren: 0.1
+                staggerChildren: 0.2
             }
         }
     }
 
     const item = {
-        hidden: { opacity: 0 },
-        show: { opacity: 1 }
+        hidden: { scale: 0 },
+        show: { scale: 1 }
     }
 
     return (

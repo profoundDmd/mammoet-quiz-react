@@ -5,6 +5,7 @@
     {
       "id": 1,
       "question":"Vraag 1",
+      "youtubeId": "",
       "answers": [
         {
           "id": 1,
@@ -24,6 +25,7 @@
     {
       "id": 2,
       "question":"Vraag 2",
+      "youtubeId": "",
       "answers": [
         {
           "id": 1,
@@ -43,6 +45,7 @@
     {
       "id": 3,
       "question":"Vraag 3",
+      "youtubeId": "",
       "answers": [
         {
           "id": 1,
@@ -62,6 +65,7 @@
     {
       "id": 4,
       "question":"Vraag 4",
+      "youtubeId": "",
       "answers": [
         {
           "id": 1,
@@ -81,6 +85,7 @@
     {
       "id": 5,
       "question":"Vraag 5",
+      "youtubeId": "",
       "answers": [
         {
           "id": 1,
@@ -100,6 +105,7 @@
     {
       "id": 6,
       "question":"Vraag 6",
+      "youtubeId": "",
       "answers": [
         {
           "id": 1,

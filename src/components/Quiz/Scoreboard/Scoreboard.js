@@ -2,8 +2,12 @@ import React from 'react';
 import {motion} from "framer-motion";
 import "./Scoreboard.scss";
 import comet from "../../../assets/images/comet.png";
+import Button from "../../Button/Button";
+import {useNavigate} from "react-router-dom";
 
 const Scoreboard = ({setShowQuestionCounter, showScoreboard}) => {
+
+    const navigate = useNavigate();
 
     const spring = {
         type: "spring",
@@ -16,6 +20,10 @@ const Scoreboard = ({setShowQuestionCounter, showScoreboard}) => {
         setShowQuestionCounter(t => !t);
     }
 
+    const endQuiz = () => {
+        navigate("/mainmenu");
+    }
+
     return (
         <>
             {showScoreboard && (
@@ -26,7 +34,9 @@ const Scoreboard = ({setShowQuestionCounter, showScoreboard}) => {
                 transition={{duration: 0.8, type: "spring"}}
                 onAnimationComplete={onAnimationComplete}
             >
-                <h2>Scoreboard</h2>
+                <span className="scoreText">Score</span>
+                <span className="score scoreText">0</span>
+                <Button text="STOP" type="stone" clickEvent={endQuiz}/>
             </motion.div>
             )}
         </>

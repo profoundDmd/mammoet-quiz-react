@@ -8,6 +8,8 @@ import Scoreboard from "./Scoreboard/Scoreboard";
 import Mammoth from "./Mammoth/Mammoth";
 import questions from "./questions.json"
 import QuestionCounter from "./QuestionCounter/QuestionCounter";
+import YouTube from "react-youtube";
+import wallPainting from "./../../assets/images/wallPainting.jpeg";
 
 const Quiz = () => {
     const opts = {
@@ -54,13 +56,7 @@ const Quiz = () => {
             <div className="bigFrameContent">
                 <AnimatePresence onExitComplete={onYtIntroExitComplete}>
                     { showYtIntro && (
-                        (<>
-                            <Mammoth setShowScoreboard={setShowScoreboard}/>
-                            <Scoreboard setShowQuestionCounter={setShowQuestionCounter} showScoreboard={showScoreboard} />
-                            <QuestionCounter questions={questions.questions} showQuestionCounter={showQuestionCounter}/>
-                        </>)/*
-                        /*
-                        <motion.div className="ytIntro" exit={{ opacity: 0, duration: 2 }}>
+                        <motion.div className="ytIntro" exit={{ opacity: 0, transition: {duration: 2.5} }}>
                             <div className="modalBg" />
                             <YouTube
                                 videoId="452kpneADrA"
@@ -73,7 +69,7 @@ const Quiz = () => {
                                 animate={showWallPainting ? 'show' : 'hide'}
                                 src={wallPainting}
                             />
-                        </motion.div>*/
+                        </motion.div>
                     )}
                 </AnimatePresence>
 
@@ -82,7 +78,13 @@ const Quiz = () => {
                 </AnimatePresence>
 
                 <AnimatePresence>
-                    {showQuizProps && (<><Scoreboard/><Mammoth/></>)}
+                    {showQuizProps && (
+                        <>
+                            <Mammoth setShowScoreboard={setShowScoreboard}/>
+                            <Scoreboard setShowQuestionCounter={setShowQuestionCounter} showScoreboard={showScoreboard} />
+                            <QuestionCounter questions={questions.questions} showQuestionCounter={showQuestionCounter}/>
+                        </>
+                    )}
                 </AnimatePresence>
 
                 <motion.div className="quizQuestions">
