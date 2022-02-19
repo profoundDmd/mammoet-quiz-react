@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {motion} from "framer-motion";
 import "./Scoreboard.scss";
 import comet from "../../../assets/images/comet.png";
@@ -7,14 +7,9 @@ import {useNavigate} from "react-router-dom";
 
 const Scoreboard = ({setShowQuestionCounter, showScoreboard}) => {
 
-    const navigate = useNavigate();
+    const [disabledClass, setDisabledClass] = useState("disabled");
 
-    const spring = {
-        type: "spring",
-        stiffness: 700,
-        damping: 30,
-        transition: { duration: 4300 }
-    };
+    const navigate = useNavigate();
 
     const onAnimationComplete = () => {
         setShowQuestionCounter(t => !t);
@@ -36,7 +31,7 @@ const Scoreboard = ({setShowQuestionCounter, showScoreboard}) => {
             >
                 <span className="scoreText">Score</span>
                 <span className="score scoreText">0</span>
-                <Button text="STOP" type="stone" clickEvent={endQuiz}/>
+                <Button text="STOP" type="stone" className={`stopQuiz ${disabledClass}`} clickEvent={endQuiz}/>
             </motion.div>
             )}
         </>
