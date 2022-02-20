@@ -1,9 +1,10 @@
 import React from 'react';
+import "./Question.scss";
 
-const Question = () => {
+const Question = ({question}) => {
     return (
         <div>
-
+            {question.id}
         </div>
     );
 };

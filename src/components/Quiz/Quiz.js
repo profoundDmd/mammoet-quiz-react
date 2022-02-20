@@ -6,10 +6,11 @@ import Ribbon from "./Ribbon/Ribbon";
 import QuizIntroText from "./QuizIntroText";
 import Scoreboard from "./Scoreboard/Scoreboard";
 import Mammoth from "./Mammoth/Mammoth";
-import questions from "./questions.json"
+import questionList from "./questions.json"
 import QuestionCounter from "./QuestionCounter/QuestionCounter";
 import YouTube from "react-youtube";
 import wallPainting from "./../../assets/images/wallPainting.jpeg";
+import Question from "./Question/Question";
 
 const Quiz = () => {
     const opts = {
@@ -19,10 +20,10 @@ const Quiz = () => {
     const [showYtIntro, setShowYtIntro] = useState(true);
     const [showText, setShowText] = useState(false);
     const [showQuizProps, setShowQuizProps] = useState(false);
-    const [state, setState] = useState(questions);
 
     const [showScoreboard, setShowScoreboard] = useState(false);
     const [showQuestionCounter, setShowQuestionCounter] = useState(false);
+    const [quizPropsSetupDone, setQuizPropsSetupDone] = useState(false);
 
     const onYtIntroReady = (event) => {
         setShowWallPainting(false);
@@ -82,14 +83,21 @@ const Quiz = () => {
                         <>
                             <Mammoth setShowScoreboard={setShowScoreboard}/>
                             <Scoreboard setShowQuestionCounter={setShowQuestionCounter} showScoreboard={showScoreboard} />
-                            <QuestionCounter questions={questions.questions} showQuestionCounter={showQuestionCounter}/>
+                            <QuestionCounter questions={questionList.questions} showQuestionCounter={showQuestionCounter} />
                         </>
                     )}
                 </AnimatePresence>
 
-                <motion.div className="quizQuestions">
+                {quizPropsSetupDone && (
+                    <motion.div className="quizQuestions">
+                        {
+                            questionList.questions.map(question => {
+                                return <Question question={question} />
+                            })
+                        }
+                    </motion.div>
+                )}
 
-                </motion.div>
             </div>
             <img src={bigFrameBorder} className="bigFrameImage" alt=""/>
             <Ribbon text="Quiz" classNames="frameRibbon"/>

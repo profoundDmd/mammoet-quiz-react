@@ -18,6 +18,10 @@ const QuestionCounter = ({showQuestionCounter, questions, currentQuestion}) => {
         show: { scale: 1 }
     }
 
+    const onAnimationComplete = () => {
+
+    }
+
     return (
         <>
             {showQuestionCounter && (
@@ -26,6 +30,7 @@ const QuestionCounter = ({showQuestionCounter, questions, currentQuestion}) => {
                     variants={variants}
                     initial="hidden"
                     animate="show"
+                    onAnimationComplete={onAnimationComplete}
                 >
                     {
                         questions.map(question => (
