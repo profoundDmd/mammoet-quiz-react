@@ -15,7 +15,8 @@ const QuizIntroText = ({setShowText}) => {
         setShowText((showText) => !showText);
     }
 
-    const introText = "Hallo iedereen, welkom op de grote Mammoetquiz van het Vleeshuismuseum. Deze quiz gaat over de mammoet en de tijd waarin de mammoet leefde. Willen jullie een leuke en spannende quiz spelen? Druk op de knop om te starten!"
+    //const introText = "Hallo iedereen, welkom op de grote Mammoetquiz van het Vleeshuismuseum. Deze quiz gaat over de mammoet en de tijd waarin de mammoet leefde. Willen jullie een leuke en spannende quiz spelen? Druk op de knop om te starten!"
+    const introText = "test 1 2 3 ";
 
     return (
         <motion.div className="textIntro" exit={{ opacity: 0, transition: {duration: 2.5}}}>

@@ -24,6 +24,7 @@ const Quiz = () => {
     const [showScoreboard, setShowScoreboard] = useState(false);
     const [showQuestionCounter, setShowQuestionCounter] = useState(false);
     const [quizPropsSetupDone, setQuizPropsSetupDone] = useState(false);
+    const [currentQuestion, setCurrentQuestion] = useState(0);
 
     const onYtIntroReady = (event) => {
         setShowWallPainting(false);
@@ -83,7 +84,7 @@ const Quiz = () => {
                         <>
                             <Mammoth setShowScoreboard={setShowScoreboard}/>
                             <Scoreboard setShowQuestionCounter={setShowQuestionCounter} showScoreboard={showScoreboard} />
-                            <QuestionCounter questions={questionList.questions} showQuestionCounter={showQuestionCounter} />
+                            <QuestionCounter questions={questionList.questions} showQuestionCounter={showQuestionCounter} setQuizPropsSetupDone={setQuizPropsSetupDone}/>
                         </>
                     )}
                 </AnimatePresence>
@@ -91,8 +92,10 @@ const Quiz = () => {
                 {quizPropsSetupDone && (
                     <motion.div className="quizQuestions">
                         {
-                            questionList.questions.map(question => {
-                                return <Question question={question} />
+                            questionList.questions.map((question, index) => {
+                                return index === currentQuestion && (
+                                    <Question question={question} setCurrentQuestion={setCurrentQuestion} key={`question_${question.id}`}/>
+                                )
                             })
                         }
                     </motion.div>

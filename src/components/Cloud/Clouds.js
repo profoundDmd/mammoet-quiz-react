@@ -1,7 +1,7 @@
 import React from 'react';
-import "./Cloud.scss";
+import "./Clouds.scss";
 
-const Cloud = () => {
+const Clouds = () => {
     return (
         <div className="clouds">
             <div className="cloud1">
@@ -23,4 +23,4 @@ const Cloud = () => {
     );
 };
 
-export default Cloud;
+export default Clouds;

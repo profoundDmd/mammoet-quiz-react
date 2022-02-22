@@ -11,7 +11,7 @@ import Microscope from "./components/Microscope/Microscope";
 import Quiz from "./components/Quiz/Quiz";
 import {Route, Routes, useLocation} from "react-router-dom";
 import {AnimatePresence} from "framer-motion";
-import Cloud from "./components/Cloud/Cloud";
+import Clouds from "./components/Cloud/Clouds";
 
 function App() {
 
@@ -26,7 +26,7 @@ function App() {
     return (
       <>
           <div className="quizScreen screen">
-              <Cloud/>
+              <Clouds/>
               <AnimatePresence exitBeforeEnter>
                   <Routes location={location} key={location.pathname}>
                       <Route exact path="/" element={<StartScreen bgMusic={bgMusic} />} />

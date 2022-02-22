@@ -80,3 +80,11 @@
 .quizProps{
   position: absolute;
 }
+
+.quizQuestions{
+  display: flex;
+  width: 550px;
+  position: relative;
+  top: 110px;
+  overflow: hidden;
+}

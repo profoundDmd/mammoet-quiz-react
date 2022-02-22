@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {motion} from "framer-motion";
 import "./QuestionCounter.scss"
 
-const QuestionCounter = ({showQuestionCounter, questions, currentQuestion}) => {
+const QuestionCounter = ({showQuestionCounter, questions, setQuizPropsSetupDone, currentQuestion}) => {
     const variants = {
         hidden: {scale: 0},
         show: {
@@ -19,7 +19,7 @@ const QuestionCounter = ({showQuestionCounter, questions, currentQuestion}) => {
     }
 
     const onAnimationComplete = () => {
-
+        setQuizPropsSetupDone(isDone => !isDone);
     }
 
     return (
