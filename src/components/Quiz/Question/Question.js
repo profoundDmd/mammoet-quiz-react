@@ -1,11 +1,15 @@
 import React, {useState} from 'react';
 import "./Question.scss";
 import YouTube from "react-youtube";
-import {AnimatePresence} from "framer-motion";
+import {AnimatePresence, motion} from "framer-motion";
+import Typewriter from "typewriter-effect";
+import Answer from "../Answer/Answer";
 
 const Question = ({question, setCurrentQuestion}) => {
 
-    const [askQuestion, setAskQuestion] = useState(false);
+    const [showYoutubeVid, setShowYoutubeVid] = useState(true);
+    const [showQuestion, setShowQuestion] = useState(false);
+    const [showAnswers, setShowAnswers] = useState(false);
 
     const opts = {height: '390', width: '640', playerVars: {autoplay: 1,}, origin: 'http://localhost:3000',};
 
@@ -14,11 +18,11 @@ const Question = ({question, setCurrentQuestion}) => {
     }
 
     const onYtIntroEnd = () => {
-
+        setShowYoutubeVid(false);
     }
 
     const onYtIntroExitComplete = () => {
-
+        setShowQuestion(true);
     }
 
     const nextQuestion = () => {
@@ -27,31 +31,43 @@ const Question = ({question, setCurrentQuestion}) => {
         });
     }
 
+    const textDone = () => {
+        setShowAnswers(true);
+    }
+
     return (
         <div className="question">
             <AnimatePresence onExitComplete={onYtIntroExitComplete}>
-                <div className="modalBg" />
-                <YouTube
-                    videoId="452kpneADrA"
-                    opts={opts}
-                    onReady={onYtIntroReady}
-                    onEnd={onYtIntroEnd}
-                    className="youtubeVid"/>
+                {showYoutubeVid && (
+                    <motion.div className="ytIntro" exit={{ opacity: 0, transition: {duration: 2.5} }}>
+                        <div className="modalBg" />
+                        <YouTube
+                            videoId="452kpneADrA"
+                            opts={opts}
+                            onReady={onYtIntroReady}
+                            onEnd={onYtIntroEnd}
+                            className="youtubeVid"/>
+                    </motion.div>
+                )}
             </AnimatePresence>
 
-            {question.question}
-            {
+            {showQuestion && (
+                <Typewriter
+                    options={{delay: 65, cursor: " "}}
+                    onInit={(typewriter) => {
+                        typewriter.typeString(question.question).callFunction(textDone).start();
+                    }}
+                />
+            )}
+
+            {showAnswers && (
                 question.answers.map(
                     answer => { return(
-                        <div key={`answer_${answer.id}`}>
-                            <div>${answer.answer}</div>
-                            <div>${answer.isCorrect}</div>
-                        </div>
+                        <Answer {...answer} />
                     )}
                 )
-            }
-
-            <button onClick={nextQuestion}> klik</button>
+            )}
+            <button onClick={nextQuestion}>klik</button>
         </div>
     );
 };

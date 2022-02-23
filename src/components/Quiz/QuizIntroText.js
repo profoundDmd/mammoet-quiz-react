@@ -21,10 +21,7 @@ const QuizIntroText = ({setShowText}) => {
     return (
         <motion.div className="textIntro" exit={{ opacity: 0, transition: {duration: 2.5}}}>
             <Typewriter
-                options={{
-                    delay: 65,
-                    cursor: " "
-                }}
+                options={{delay: 65, cursor: " "}}
                 onInit={(typewriter) => {
                     typewriter.typeString(`${introText}`).callFunction(textDone).start();
                 }}
