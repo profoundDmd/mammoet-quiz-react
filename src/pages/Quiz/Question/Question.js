@@ -10,6 +10,7 @@ const Question = ({question, setCurrentQuestion}) => {
     const [showYoutubeVid, setShowYoutubeVid] = useState(true);
     const [showQuestion, setShowQuestion] = useState(false);
     const [showAnswers, setShowAnswers] = useState(false);
+    const [isQuestionAnswered, setIsQuestionAnswered] = useState(false);
 
     const opts = {height: '390', width: '640', playerVars: {autoplay: 1,}, origin: 'http://localhost:3000',};
 
@@ -63,7 +64,7 @@ const Question = ({question, setCurrentQuestion}) => {
             {showAnswers && (
                 question.answers.map(
                     answer => { return(
-                        <Answer {...answer} />
+                        <Answer {...answer} setIsQuestionAnswered={setIsQuestionAnswered} isQuestionAnswered={isQuestionAnswered}/>
                     )}
                 )
             )}

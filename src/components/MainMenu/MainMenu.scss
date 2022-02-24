@@ -1,6 +1,6 @@
 .mainMenu{
   position: absolute;
-  background: url("src/assets/images/bgGui.png") no-repeat;
+  background: url(../../assets/images/bgGui.png) no-repeat;
   height: 570px;
   width: 560px;
   left: 50%;
@@ -26,7 +26,7 @@
   text-shadow: 2px 4px #0a070212;
   font-family: 'gameria', sans-serif;
   filter: drop-shadow(6px 0px 4px #000);
-  background: url("src/assets/images/stoneTexture.jpeg");
+  background: url(../../assets/images/stoneTexture.jpeg);
   -webkit-background-clip: text;
   background-size: inherit;
   color: #848484b8;

@@ -1,0 +1,41 @@
+.answer{
+  position: relative;
+  width: 350px;
+  height: 150px;
+}
+
+.correctAnswer, .wrongAnswer{
+  pointer-events: none;
+}
+
+.answered{
+  background: #131212;
+  pointer-events: none;
+}
+
+.frontside, .backside {
+  backface-visibility: hidden;
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.frontside{
+  background: #31cfc3;
+  transform: rotateY(0deg);
+
+  &.flip{
+    transform: rotateY(-180deg);
+  }
+}
+
+.backside{
+  background: #7e4728;
+  transform: rotateY(-180deg);
+
+  &.flip{
+    transform: rotateY(0deg);
+  }
+}

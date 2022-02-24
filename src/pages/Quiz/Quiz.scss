@@ -25,7 +25,7 @@
 
 .bigFrameContent::before {
   content: "";
-  background-image: url("src/assets/images/bgWood.jpeg");
+  background-image: url(../../../src/assets/images/bgWood.jpeg);
   opacity: 0.35;
   left: 0;
   right: 0;
