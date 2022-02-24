@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {motion} from "framer-motion";
 import Typewriter from "typewriter-effect";
-import Button from "../Button/Button";
+import Button from "../../components/Button/Button";
 
 const QuizIntroText = ({setShowText}) => {
 

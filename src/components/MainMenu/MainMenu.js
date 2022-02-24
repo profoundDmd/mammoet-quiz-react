@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import Title from "../../components/Title/Title";
-import Button from "../../components/Button/Button";
+import Title from "../Title/Title";
+import Button from "../Button/Button";
 import "./MainMenu.scss"
 import {motion} from "framer-motion";
 import {useNavigate} from 'react-router-dom';

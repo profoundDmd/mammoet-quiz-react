@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import "./Quiz.scss";
 import {AnimatePresence, motion} from "framer-motion";
-import bigFrameBorder from "./../../assets/images/bigFrame.png";
+import bigFrameBorder from "../../assets/images/bigFrame.png";
 import Ribbon from "./Ribbon/Ribbon";
 import QuizIntroText from "./QuizIntroText";
 import Scoreboard from "./Scoreboard/Scoreboard";
@@ -9,7 +9,7 @@ import Mammoth from "./Mammoth/Mammoth";
 import questionList from "./questions.json"
 import QuestionCounter from "./QuestionCounter/QuestionCounter";
 import YouTube from "react-youtube";
-import wallPainting from "./../../assets/images/wallPainting.jpeg";
+import wallPainting from "../../assets/images/wallPainting.jpeg";
 import Question from "./Question/Question";
 
 const Quiz = () => {

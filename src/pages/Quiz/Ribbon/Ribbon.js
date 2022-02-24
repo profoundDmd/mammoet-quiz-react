@@ -1,6 +1,6 @@
 import React from 'react';
 import {motion} from "framer-motion";
-import ribbonBg from "./../../../assets/images/titleWood.png";
+import ribbonBg from "../../../assets/images/titleWood.png";
 import "./Ribbon.scss";
 
 const Ribbon = ({text, classNames}) => {

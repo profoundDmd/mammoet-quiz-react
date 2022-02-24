@@ -25,7 +25,7 @@
 
 .bigFrameContent::before {
   content: "";
-  background-image: url("./../../assets/images/bgWood.jpeg");
+  background-image: url("src/assets/images/bgWood.jpeg");
   opacity: 0.35;
   left: 0;
   right: 0;
@@ -61,7 +61,7 @@
 }
 
 .textIntro{
-  font-family: generalFont;
+  font-family: generalFont, sans-serif;
   position: relative;
   width: 100%;
   padding: 130px;

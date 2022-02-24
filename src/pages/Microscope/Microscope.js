@@ -1,10 +1,10 @@
 import React from 'react';
 import Webcam from "react-webcam";
 import "./Microscope.scss"
-import Button from "../Button/Button";
+import Button from "../../components/Button/Button";
 import {useNavigate} from "react-router-dom";
 import {motion} from "framer-motion";
-import handle from "./../../assets/images/handle.png"
+import handle from "../../assets/images/handle.png"
 
 const Microscope = () => {
     const navigate = useNavigate();

@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import {motion} from "framer-motion";
 import "./Scoreboard.scss";
-import comet from "../../../assets/images/comet.png";
-import Button from "../../Button/Button";
+import Button from "../../../components/Button/Button";
 import {useNavigate} from "react-router-dom";
 
 const Scoreboard = ({setShowQuestionCounter, showScoreboard}) => {
