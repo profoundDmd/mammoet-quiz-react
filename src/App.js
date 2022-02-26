@@ -8,7 +8,7 @@ import Microscope from "./pages/Microscope/Microscope";
 import Quiz from "./pages/Quiz/Quiz";
 import {Route, Routes, useLocation} from "react-router-dom";
 import {AnimatePresence} from "framer-motion";
-import Clouds from "./components/Cloud/Clouds";
+import Clouds from "./components/Clouds/Clouds";
 
 function App() {
 

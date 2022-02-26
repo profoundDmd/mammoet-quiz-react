@@ -25,6 +25,7 @@ const Quiz = () => {
     const [showQuestionCounter, setShowQuestionCounter] = useState(false);
     const [quizPropsSetupDone, setQuizPropsSetupDone] = useState(false);
     const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [stopButtonDisabledClass, setStopButtonDisabledClass] = useState("disabled");
 
     const onYtIntroReady = (event) => {
         setShowWallPainting(false);
@@ -83,7 +84,7 @@ const Quiz = () => {
                     {showQuizProps && (
                         <>
                             <Mammoth setShowScoreboard={setShowScoreboard}/>
-                            <Scoreboard setShowQuestionCounter={setShowQuestionCounter} showScoreboard={showScoreboard} />
+                            <Scoreboard setShowQuestionCounter={setShowQuestionCounter} showScoreboard={showScoreboard} stopButtonDisabledClass={stopButtonDisabledClass} />
                             <QuestionCounter questions={questionList.questions} showQuestionCounter={showQuestionCounter} setQuizPropsSetupDone={setQuizPropsSetupDone}/>
                         </>
                     )}
@@ -94,7 +95,7 @@ const Quiz = () => {
                         {
                             questionList.questions.map((question, index) => {
                                 return index === currentQuestion && (
-                                    <Question question={question} setCurrentQuestion={setCurrentQuestion} key={`question_${question.id}`}/>
+                                    <Question question={question} setCurrentQuestion={setCurrentQuestion} setStopButtonDisabledClass={setStopButtonDisabledClass} key={`question_${question.id}`}/>
                                 )
                             })
                         }

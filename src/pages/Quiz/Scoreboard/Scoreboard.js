@@ -1,12 +1,10 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {motion} from "framer-motion";
 import "./Scoreboard.scss";
 import Button from "../../../components/Button/Button";
 import {useNavigate} from "react-router-dom";
 
-const Scoreboard = ({setShowQuestionCounter, showScoreboard}) => {
-
-    const [disabledClass, setDisabledClass] = useState("disabled");
+const Scoreboard = ({setShowQuestionCounter, showScoreboard,stopButtonDisabledClass}) => {
 
     const navigate = useNavigate();
 
@@ -21,17 +19,17 @@ const Scoreboard = ({setShowQuestionCounter, showScoreboard}) => {
     return (
         <>
             {showScoreboard && (
-            <motion.div
-                className="scoreboard quizProps"
-                initial={{scale: 0}}
-                animate={{scale: 1}}
-                transition={{duration: 0.8, type: "spring"}}
-                onAnimationComplete={onAnimationComplete}
-            >
-                <span className="scoreText">Score</span>
-                <span className="score scoreText">0</span>
-                <Button text="STOP" type="stone" className={`stopQuiz ${disabledClass}`} clickEvent={endQuiz}/>
-            </motion.div>
+                <motion.div
+                    className="scoreboard quizProps"
+                    initial={{scale: 0}}
+                    animate={{scale: 1}}
+                    transition={{duration: 0.8, type: "spring"}}
+                    onAnimationComplete={onAnimationComplete}
+                >
+                    <span className="scoreText">Score</span>
+                    <span className="score scoreText">0</span>
+                    <Button text="STOP" type="stone" className={`stopQuiz ${stopButtonDisabledClass}`} clickEvent={endQuiz}/>
+                </motion.div>
             )}
         </>
     );

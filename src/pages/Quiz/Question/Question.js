@@ -5,12 +5,13 @@ import {AnimatePresence, motion} from "framer-motion";
 import Typewriter from "typewriter-effect";
 import Answer from "../Answer/Answer";
 
-const Question = ({question, setCurrentQuestion}) => {
+const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass}) => {
 
     const [showYoutubeVid, setShowYoutubeVid] = useState(true);
     const [showQuestion, setShowQuestion] = useState(false);
     const [showAnswers, setShowAnswers] = useState(false);
     const [isQuestionAnswered, setIsQuestionAnswered] = useState(false);
+    const [animateAmountToTop, setAnimateAmountToTop] = useState();
 
     const opts = {height: '390', width: '640', playerVars: {autoplay: 1,}, origin: 'http://localhost:3000',};
 
@@ -33,7 +34,13 @@ const Question = ({question, setCurrentQuestion}) => {
     }
 
     const textDone = () => {
+        setAnimateAmountToTop(-180);
+        //setShowAnswers(true);
+    }
+
+    const questionTextAnimation = () => {
         setShowAnswers(true);
+        setStopButtonDisabledClass("");
     }
 
     return (
@@ -53,22 +60,34 @@ const Question = ({question, setCurrentQuestion}) => {
             </AnimatePresence>
 
             {showQuestion && (
-                <Typewriter
-                    options={{delay: 65, cursor: " "}}
-                    onInit={(typewriter) => {
-                        typewriter.typeString(question.question).callFunction(textDone).start();
-                    }}
-                />
+                <motion.div
+                    className="questionText"
+                    animate={{ y: animateAmountToTop, transition: {duration: .5}}}
+                    onAnimationComplete={questionTextAnimation}
+                >
+                    <Typewriter
+                        options={{delay: 65, cursor: " "}}
+                        onInit={(typewriter) => {
+                            typewriter.typeString(question.question).callFunction(textDone).start();
+                        }}
+                    />
+                </motion.div>
             )}
 
+            <div className="answers">
+                {showAnswers && (
+                    question.answers.map(
+                        answer => { return(
+                            <Answer {...answer} setIsQuestionAnswered={setIsQuestionAnswered} isQuestionAnswered={isQuestionAnswered}/>
+                        )}
+                    )
+                )}
+            </div>
+
             {showAnswers && (
-                question.answers.map(
-                    answer => { return(
-                        <Answer {...answer} setIsQuestionAnswered={setIsQuestionAnswered} isQuestionAnswered={isQuestionAnswered}/>
-                    )}
-                )
+                <button onClick={nextQuestion}>klik</button>
             )}
-            <button onClick={nextQuestion}>klik</button>
+
         </div>
     );
 };

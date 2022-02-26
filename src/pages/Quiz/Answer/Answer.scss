@@ -1,6 +1,6 @@
 .answer{
   position: relative;
-  width: 350px;
+  width: 200px;
   height: 150px;
 }
 
@@ -9,8 +9,18 @@
 }
 
 .answered{
-  background: #131212;
   pointer-events: none;
+  position: relative;
+
+  &::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #0000008c;
+  }
 }
 
 .frontside, .backside {

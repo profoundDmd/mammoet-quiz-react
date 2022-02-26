@@ -1,4 +1,18 @@
 .question{
   flex-shrink: 0;
   flex-basis: 550px;
+  padding: 0 0 0 50px;
+  box-sizing: border-box;
+}
+
+.answers{
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  top: 50px;
+}
+
+.questionText{
+  position: relative;
+  top: 200px;
 }
