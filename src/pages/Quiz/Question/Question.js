@@ -4,6 +4,7 @@ import YouTube from "react-youtube";
 import {AnimatePresence, motion} from "framer-motion";
 import Typewriter from "typewriter-effect";
 import Answer from "../Answer/Answer";
+import Button from "../../../components/Button/Button";
 
 const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass}) => {
 
@@ -11,7 +12,8 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass}) =>
     const [showQuestion, setShowQuestion] = useState(false);
     const [showAnswers, setShowAnswers] = useState(false);
     const [isQuestionAnswered, setIsQuestionAnswered] = useState(false);
-    const [animateAmountToTop, setAnimateAmountToTop] = useState();
+    const [animateQuestionText, setAnimateQuestionText] = useState();
+    const [animateQuestionOffScreen, setAnimateQuestionOffScreen] = useState();
 
     const opts = {height: '390', width: '640', playerVars: {autoplay: 1,}, origin: 'http://localhost:3000',};
 
@@ -28,14 +30,12 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass}) =>
     }
 
     const nextQuestion = () => {
-        setCurrentQuestion(cq => {
-            return ++cq;
-        });
+        setStopButtonDisabledClass("disabled");
+        setAnimateQuestionOffScreen(-400);
     }
 
     const textDone = () => {
-        setAnimateAmountToTop(-180);
-        //setShowAnswers(true);
+        setAnimateQuestionText(-180);
     }
 
     const questionTextAnimation = () => {
@@ -43,8 +43,18 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass}) =>
         setStopButtonDisabledClass("");
     }
 
+    const animatedOffScreen = () => {
+        setCurrentQuestion(cq => {
+            return ++cq;
+        });
+    }
+
     return (
-        <div className="question">
+        <motion.div
+            className="question"
+            animate={{ x: animateQuestionOffScreen, transition: {duration: .5}}}
+            onAnimationComplete={animatedOffScreen}
+        >
             <AnimatePresence onExitComplete={onYtIntroExitComplete}>
                 {showYoutubeVid && (
                     <motion.div className="ytIntro" exit={{ opacity: 0, transition: {duration: 2.5} }}>
@@ -62,7 +72,7 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass}) =>
             {showQuestion && (
                 <motion.div
                     className="questionText"
-                    animate={{ y: animateAmountToTop, transition: {duration: .5}}}
+                    animate={{ y: animateQuestionText, transition: {duration: .5}}}
                     onAnimationComplete={questionTextAnimation}
                 >
                     <Typewriter
@@ -84,11 +94,20 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass}) =>
                 )}
             </div>
 
-            {showAnswers && (
-                <button onClick={nextQuestion}>klik</button>
-            )}
+            <AnimatePresence>
+                {isQuestionAnswered && (
+                    <motion.div
+                        initial={{opacity: 0, y: 50 }}
+                        animate={{opacity: 1, y: 0 }}
+                        transition={{duration: 1, type: "spring"}}
+                    >
+                        <Button type="stone" text="Volgende" clickEvent={nextQuestion} />
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
-        </div>
+
+        </motion.div>
     );
 };
 

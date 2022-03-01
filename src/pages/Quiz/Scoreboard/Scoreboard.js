@@ -4,7 +4,7 @@ import "./Scoreboard.scss";
 import Button from "../../../components/Button/Button";
 import {useNavigate} from "react-router-dom";
 
-const Scoreboard = ({setShowQuestionCounter, showScoreboard,stopButtonDisabledClass}) => {
+const Scoreboard = ({setShowQuestionCounter, showScoreboard, stopButtonDisabledClass, score}) => {
 
     const navigate = useNavigate();
 
@@ -27,7 +27,7 @@ const Scoreboard = ({setShowQuestionCounter, showScoreboard,stopButtonDisabledCl
                     onAnimationComplete={onAnimationComplete}
                 >
                     <span className="scoreText">Score</span>
-                    <span className="score scoreText">0</span>
+                    <span className="score scoreText">{score}</span>
                     <Button text="STOP" type="stone" className={`stopQuiz ${stopButtonDisabledClass}`} clickEvent={endQuiz}/>
                 </motion.div>
             )}

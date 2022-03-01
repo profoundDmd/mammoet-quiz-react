@@ -1,11 +1,20 @@
 .answer{
   position: relative;
-  width: 200px;
-  height: 150px;
+  width: 230px;
+  height: 110px;
+  color: orange;
 }
 
 .correctAnswer, .wrongAnswer{
   pointer-events: none;
+}
+
+.correctAnswer{
+  background: url(../../../assets/images/correctAnswer.png);
+}
+
+.wrongAnswer{
+  background: url(../../../assets/images/wrongAnswer.png);
 }
 
 .answered{
@@ -30,10 +39,16 @@
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
+  height: 82%;
+  background-size: contain !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .frontside{
-  background: #31cfc3;
+  background: url(../../../assets/images/answer.png) no-repeat;
   transform: rotateY(0deg);
 
   &.flip{
