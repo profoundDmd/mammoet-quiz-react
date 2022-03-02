@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import "./Answer.scss";
 
-const Answer = ({id, answer, isCorrect, setIsQuestionAnswered, isQuestionAnswered}) => {
+const Answer = ({id, answer, isCorrect, setIsQuestionAnswered, isQuestionAnswered, setScore, setThrowConfetti}) => {
     const [flipClass, setFlipClass] = useState("");
+    const item = {hidden: { scale: 0 }, show: { scale: 1 }}
 
     useEffect(() => {
         if(isQuestionAnswered && isCorrect){ flip();}
@@ -10,7 +11,10 @@ const Answer = ({id, answer, isCorrect, setIsQuestionAnswered, isQuestionAnswere
 
     const onClick = () => {
         setIsQuestionAnswered(true);
-        if(isCorrect){}
+        if(isCorrect){
+            setScore(score => ++score);
+            setThrowConfetti(true);
+        }
         else{}
     }
 
@@ -24,7 +28,7 @@ const Answer = ({id, answer, isCorrect, setIsQuestionAnswered, isQuestionAnswere
     }
 
     return (
-        <div key={`answer_${id}`} className="answer" onClick={onClick}>
+        <div key={`answer_${id}`} className="answer" onClick={onClick} variants={item}>
             <div className={`frontside ${flipClass} ${isQuestionAnswered? "answered" :""}`} onClick={flip}>
                 <div>{answer}</div>
             </div>

@@ -96,7 +96,7 @@ const Quiz = () => {
                         {
                             questionList.questions.map((question, index) => {
                                 return index === currentQuestion && (
-                                    <Question question={question} setCurrentQuestion={setCurrentQuestion} setStopButtonDisabledClass={setStopButtonDisabledClass} key={`question_${question.id}`}/>
+                                    <Question question={question} setCurrentQuestion={setCurrentQuestion} setStopButtonDisabledClass={setStopButtonDisabledClass} setScore={setScore} key={`question_${question.id}`}/>
                                 )
                             })
                         }

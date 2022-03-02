@@ -5,8 +5,9 @@ import {AnimatePresence, motion} from "framer-motion";
 import Typewriter from "typewriter-effect";
 import Answer from "../Answer/Answer";
 import Button from "../../../components/Button/Button";
+import Confetti from 'react-confetti'
 
-const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass}) => {
+const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass, setScore}) => {
 
     const [showYoutubeVid, setShowYoutubeVid] = useState(true);
     const [showQuestion, setShowQuestion] = useState(false);
@@ -14,11 +15,18 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass}) =>
     const [isQuestionAnswered, setIsQuestionAnswered] = useState(false);
     const [animateQuestionText, setAnimateQuestionText] = useState();
     const [animateQuestionOffScreen, setAnimateQuestionOffScreen] = useState();
+    const [throwConfetti, setThrowConfetti] = useState(false);
 
     const opts = {height: '390', width: '640', playerVars: {autoplay: 1,}, origin: 'http://localhost:3000',};
 
-    const onYtIntroReady = () => {
-
+    const variants = {
+        hidden: {scale: 0},
+        show: {
+            scale: 1,
+            transition: {
+                staggerChildren: 0.2
+            }
+        }
     }
 
     const onYtIntroEnd = () => {
@@ -62,7 +70,6 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass}) =>
                         <YouTube
                             videoId="452kpneADrA"
                             opts={opts}
-                            onReady={onYtIntroReady}
                             onEnd={onYtIntroEnd}
                             className="youtubeVid"/>
                     </motion.div>
@@ -84,21 +91,26 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass}) =>
                 </motion.div>
             )}
 
-            <div className="answers">
+            <motion.div
+                variants={variants}
+                initial="hidden"
+                animate="show"
+                className="answers"
+            >
                 {showAnswers && (
                     question.answers.map(
                         answer => { return(
-                            <Answer {...answer} setIsQuestionAnswered={setIsQuestionAnswered} isQuestionAnswered={isQuestionAnswered}/>
+                            <Answer {...answer} setIsQuestionAnswered={setIsQuestionAnswered} isQuestionAnswered={isQuestionAnswered} setScore={setScore} setThrowConfetti={setThrowConfetti}/>
                         )}
                     )
                 )}
-            </div>
+            </motion.div>
 
             <AnimatePresence>
                 {isQuestionAnswered && (
                     <motion.div
-                        initial={{opacity: 0, y: 50 }}
-                        animate={{opacity: 1, y: 0 }}
+                        initial={{opacity: 0, y: 150 }}
+                        animate={{opacity: 1, y: 50 }}
                         transition={{duration: 1, type: "spring"}}
                     >
                         <Button type="stone" text="Volgende" clickEvent={nextQuestion} />
@@ -106,6 +118,7 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass}) =>
                 )}
             </AnimatePresence>
 
+            <Confetti run={throwConfetti} width={800} height={700}  />
 
         </motion.div>
     );

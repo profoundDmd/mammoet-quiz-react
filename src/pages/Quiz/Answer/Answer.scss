@@ -24,8 +24,8 @@
   &::after{
     content: "";
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 99%;
+    height: 95%;
     left: 0;
     top: 0;
     background: #0000008c;
@@ -42,6 +42,7 @@
   width: 100%;
   height: 82%;
   background-size: contain !important;
+  background-repeat: no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,7 +58,6 @@
 }
 
 .backside{
-  background: #7e4728;
   transform: rotateY(-180deg);
 
   &.flip{
