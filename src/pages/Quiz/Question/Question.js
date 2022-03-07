@@ -39,7 +39,7 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass, set
 
     const nextQuestion = () => {
         setStopButtonDisabledClass("disabled");
-        setAnimateQuestionOffScreen(-400);
+        setAnimateQuestionOffScreen(-600);
     }
 
     const textDone = () => {
@@ -52,9 +52,12 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass, set
     }
 
     const animatedOffScreen = () => {
-        setCurrentQuestion(cq => {
-            return ++cq;
-        });
+        setTimeout(() => {
+            setCurrentQuestion(cq => {
+                return ++cq;
+            });
+        }, 750)
+
     }
 
     return (
@@ -65,7 +68,7 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass, set
         >
             <AnimatePresence onExitComplete={onYtIntroExitComplete}>
                 {showYoutubeVid && (
-                    <motion.div className="ytIntro" exit={{ opacity: 0, transition: {duration: 2.5} }}>
+                    <motion.div className="ytQuestionIntro" exit={{ opacity: 0, transition: {duration: 2.5} }}>
                         <div className="modalBg" />
                         <YouTube
                             videoId="452kpneADrA"
@@ -112,8 +115,9 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass, set
                         initial={{opacity: 0, y: 150 }}
                         animate={{opacity: 1, y: 50 }}
                         transition={{duration: 1, type: "spring"}}
+                        className="nextQuestion"
                     >
-                        <Button type="stone" text="Volgende" clickEvent={nextQuestion} />
+                        <Button type="stone" text="Volgende" className="nextQuestionButton" clickEvent={nextQuestion} />
                     </motion.div>
                 )}
             </AnimatePresence>

@@ -3,6 +3,9 @@
   width: 230px;
   height: 110px;
   color: orange;
+  font-family: generalFont;
+  filter: drop-shadow(0px 0px 2px #474747);
+  text-shadow: 1px 1px 4px #1a1a1a;
 }
 
 .correctAnswer, .wrongAnswer{
@@ -24,11 +27,11 @@
   &::after{
     content: "";
     position: absolute;
-    width: 99%;
-    height: 95%;
+    width: 98%;
+    height: 94%;
     left: 0;
     top: 0;
-    background: #0000008c;
+    background: #00000059;
   }
 }
 

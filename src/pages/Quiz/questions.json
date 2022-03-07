@@ -4,120 +4,198 @@
   "questions" : [
     {
       "id": 1,
-      "question":"Vraag 1",
+      "question":"Welk gebruiksvoorwerp hoort niet thuis in de steentijd en werd pas later ontwikkeld?",
       "youtubeId": "",
       "answers": [
         {
           "id": 1,
-          "answer": "Antwoord 1",
+          "answer": "Zwaard",
           "isCorrect": true
         },{
           "id": 2,
-          "answer": "Antwoord 2",
+          "answer": "Bijl",
           "isCorrect": false
         },{
           "id": 3,
-          "answer": "Antwoord 3",
+          "answer": "Speer",
+          "isCorrect": false
+        },
+        {
+          "id": 4,
+          "answer": "Mes",
           "isCorrect": false
         }
       ]
     },
     {
       "id": 2,
-      "question":"Vraag 2",
+      "question":"Hoeveel weegt een volwassen wolharige mammoet gemiddeld?",
       "youtubeId": "",
       "answers": [
         {
           "id": 1,
-          "answer": "Antwoord 21",
+          "answer": "5000 kg",
           "isCorrect": true
         },{
           "id": 2,
-          "answer": "Antwoord 22",
+          "answer": "8000 kg",
           "isCorrect": false
         },{
           "id": 3,
-          "answer": "Antwoord 23",
+          "answer": "10 000 kg",
           "isCorrect": false
         }
       ]
     },
     {
       "id": 3,
-      "question":"Vraag 3",
+      "question":"Wat was de eerste methode om vlees te bereiden?",
       "youtubeId": "",
       "answers": [
         {
           "id": 1,
-          "answer": "Antwoord 31",
+          "answer": "Roken",
           "isCorrect": false
         },{
           "id": 2,
-          "answer": "Antwoord 32",
+          "answer": "Bakken",
           "isCorrect": true
         },{
           "id": 3,
-          "answer": "Antwoord 33",
+          "answer": "Frituren",
           "isCorrect": false
         }
       ]
     },
     {
       "id": 4,
-      "question":"Vraag 4",
+      "question":"Waarvoor gebruikte men de slagtanden van de mammoet nog?",
       "youtubeId": "",
       "answers": [
         {
           "id": 1,
-          "answer": "Antwoord 41",
+          "answer": "Hut",
           "isCorrect": true
         },{
           "id": 2,
-          "answer": "Antwoord 42",
-          "isCorrect": false
-        },{
-          "id": 3,
-          "answer": "Antwoord 43",
+          "answer": "Muziekinstrument",
           "isCorrect": false
         }
       ]
     },
     {
       "id": 5,
-      "question":"Vraag 5",
+      "question":"Hoe oud werd de mammoet gemiddeld?",
       "youtubeId": "",
       "answers": [
         {
           "id": 1,
-          "answer": "Antwoord 51",
+          "answer": "10 jaar",
           "isCorrect": false
         },{
           "id": 2,
-          "answer": "Antwoord 52",
+          "answer": "35 jaar",
           "isCorrect": false
         },{
           "id": 3,
-          "answer": "Antwoord 53",
+          "answer": "50 jaar",
           "isCorrect": true
         }
       ]
     },
     {
       "id": 6,
-      "question":"Vraag 6",
+      "question":"Hoeveel verschillende skeletdelen telt onze mammoet?",
       "youtubeId": "",
       "answers": [
         {
           "id": 1,
-          "answer": "Antwoord 61",
+          "answer": "128",
           "isCorrect": false
         },{
           "id": 2,
-          "answer": "Antwoord 62",
+          "answer": "74",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "question":"Welk dier uit onderstaand lijstje was al lang uitgestorven toen de mammoet op onze aarde rondliep?",
+      "youtubeId": "",
+      "answers": [
+        {
+          "id": 1,
+          "answer": "Holenbeer",
+          "isCorrect": false
+        },{
+          "id": 2,
+          "answer": "Tyrannosaurus Rex",
           "isCorrect": true
         },{
           "id": 3,
-          "answer": "Antwoord 63",
+          "answer": "Sabeltandtijger",
+          "isCorrect": false
+        },
+        {
+          "id": 4,
+          "answer": "Wolharige neushoorn",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "question":"Waarvoor gebruikte de prehistorische mens deze naald?",
+      "youtubeId": "",
+      "answers": [
+        {
+          "id": 1,
+          "answer": "Kledij maken",
+          "isCorrect": true
+        },{
+          "id": 2,
+          "answer": "Genezingsritueel",
+          "isCorrect": false
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "question":"De prehistorische mens kende maar 4 kleuren om kunst te maken, wat was de 4de basiskleur?",
+      "youtubeId": "",
+      "answers": [
+        {
+          "id": 1,
+          "answer": "Groen",
+          "isCorrect": false
+        },{
+          "id": 2,
+          "answer": "Blauw",
+          "isCorrect": false
+        },{
+          "id": 3,
+          "answer": "Paars",
+          "isCorrect": false
+        },{
+          "id": 4,
+          "answer": "Zwart",
+          "isCorrect": true
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "question":"Wat betekent het woord 'mammoet'?",
+      "youtubeId": "",
+      "answers": [
+        {
+          "id": 1,
+          "answer": "'Mamont' betekent aardworm bij de Jakoeten en via een spelfout is het woord 'mamoet' bij ons terecht gekomen",
+          "isCorrect": true
+        },{
+          "id": 2,
+          "answer": "De naam 'mammoet' is verleend aan de naam van de ontdekker: Bernardus Mamuttus\"",
           "isCorrect": false
         }
       ]

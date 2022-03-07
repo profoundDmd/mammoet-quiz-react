@@ -103,6 +103,10 @@ const Quiz = () => {
                     </motion.div>
                 )}
 
+                {currentQuestion === questionList.questions.length - 1 && (
+                    <div>Je hebt gedaan!</div>
+                )}
+
             </div>
             <img src={bigFrameBorder} className="bigFrameImage" alt=""/>
             <Ribbon text="Quiz" classNames="frameRibbon"/>

@@ -6,7 +6,9 @@ const Answer = ({id, answer, isCorrect, setIsQuestionAnswered, isQuestionAnswere
     const item = {hidden: { scale: 0 }, show: { scale: 1 }}
 
     useEffect(() => {
-        if(isQuestionAnswered && isCorrect){ flip();}
+        if(isQuestionAnswered && isCorrect){
+            setCorrectBackground();
+            }
     },[isQuestionAnswered])
 
     const onClick = () => {
@@ -19,12 +21,19 @@ const Answer = ({id, answer, isCorrect, setIsQuestionAnswered, isQuestionAnswere
     }
 
     const backside = () => {
-        if(isCorrect){return <div>Joepi, het goede antwoord!</div>}
+        if(isCorrect){return <div>Correct!</div>}
         return <div>Helaas, fout antwoord</div>
     }
 
     const flip = () => {
         setFlipClass("flip");
+
+    }
+
+    const setCorrectBackground = () => {
+        if(isCorrect){
+            setFlipClass(flipClass + "correctAnswer");
+        }
     }
 
     return (

@@ -10,9 +10,26 @@
   flex-wrap: wrap;
   position: relative;
   top: 50px;
+  gap: 10px 30px;
 }
 
 .questionText{
   position: relative;
   top: 200px;
+  font-size: 25pt;
+  text-shadow: 0px 2px 2px black;
+  color: #f89c20;
+  font-family: generalFont, sans-serif;
+  stroke: #1d26b4;
+  opacity: 0.95;
+  -webkit-text-stroke: 1px #da7c1b7d;
+}
+
+.nextQuestion{
+  text-align: end;
+  margin-top: 50px;
+}
+
+.ytQuestionIntro{
+
 }

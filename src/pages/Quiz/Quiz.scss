@@ -37,9 +37,6 @@
 }
 
 .ytIntro{
-  display: grid;
-  place-items: center;
-  grid-template-areas: "inner-div";
   position: relative;
 
   & > * {
@@ -62,7 +59,6 @@
   position: absolute;
   z-index: 99;
   left: 0;
-  top: 140px;
   z-index: 99;
 }
 
