@@ -13,11 +13,13 @@
 }
 
 .correctAnswer{
-  background: url(../../../assets/images/correctAnswer.png);
+  background-image: url(../../../assets/images/correctAnswer.png) !important;
+  pointer-events: none;
 }
 
 .wrongAnswer{
-  background: url(../../../assets/images/wrongAnswer.png);
+  background-image: url(../../../assets/images/wrongAnswer.png) !important;
+  pointer-events: none;
 }
 
 .answered{

@@ -5,19 +5,12 @@ const Answer = ({id, answer, isCorrect, setIsQuestionAnswered, isQuestionAnswere
     const [flipClass, setFlipClass] = useState("");
     const item = {hidden: { scale: 0 }, show: { scale: 1 }}
 
-    useEffect(() => {
-        if(isQuestionAnswered && isCorrect){
-            setCorrectBackground();
-            }
-    },[isQuestionAnswered])
-
     const onClick = () => {
-        setIsQuestionAnswered(true);
-        if(isCorrect){
+        if(isCorrect && !isQuestionAnswered){
             setScore(score => ++score);
             setThrowConfetti(true);
         }
-        else{}
+        setIsQuestionAnswered(true);
     }
 
     const backside = () => {
@@ -27,18 +20,11 @@ const Answer = ({id, answer, isCorrect, setIsQuestionAnswered, isQuestionAnswere
 
     const flip = () => {
         setFlipClass("flip");
-
-    }
-
-    const setCorrectBackground = () => {
-        if(isCorrect){
-            setFlipClass(flipClass + "correctAnswer");
-        }
     }
 
     return (
         <div key={`answer_${id}`} className="answer" onClick={onClick} variants={item}>
-            <div className={`frontside ${flipClass} ${isQuestionAnswered? "answered" :""}`} onClick={flip}>
+            <div className={`frontside ${flipClass} ${isQuestionAnswered? isCorrect? "correctAnswer" : "answered" :""}`} onClick={flip}>
                 <div>{answer}</div>
             </div>
             <div className={`backside ${flipClass} ${isCorrect? "correctAnswer" : "wrongAnswer"}`} >
