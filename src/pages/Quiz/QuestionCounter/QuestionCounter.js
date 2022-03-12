@@ -33,10 +33,10 @@ const QuestionCounter = ({showQuestionCounter, questions, setQuizPropsSetupDone,
                     onAnimationComplete={onAnimationComplete}
                 >
                     {
-                        questions.map(question => (
+                        questions.map((question, index) => (
                             <motion.li
                                 key={question.id}
-                                className="counter"
+                                className={`counter ${currentQuestion === index? 'currentCounter': ''}`}
                                 variants={item}
                             >
                                 {question.id}

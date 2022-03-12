@@ -86,7 +86,7 @@ const Quiz = () => {
                         <>
                             <Mammoth setShowScoreboard={setShowScoreboard}/>
                             <Scoreboard setShowQuestionCounter={setShowQuestionCounter} showScoreboard={showScoreboard} stopButtonDisabledClass={stopButtonDisabledClass} score={score} />
-                            <QuestionCounter questions={questionList.questions} showQuestionCounter={showQuestionCounter} setQuizPropsSetupDone={setQuizPropsSetupDone}/>
+                            <QuestionCounter questions={questionList.questions} showQuestionCounter={showQuestionCounter} setQuizPropsSetupDone={setQuizPropsSetupDone} currentQuestion={currentQuestion}/>
                         </>
                     )}
                 </AnimatePresence>

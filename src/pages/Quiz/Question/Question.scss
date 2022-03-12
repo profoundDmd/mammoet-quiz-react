@@ -29,6 +29,10 @@
   margin-top: 50px;
 }
 
-.ytQuestionIntro{
-
+.sandglass{
+  position: absolute;
+  margin-left: 428px;
+  width: 70px;
+  top: 26px;
+  animation: sandglassShake 1.5s linear infinite;
 }
