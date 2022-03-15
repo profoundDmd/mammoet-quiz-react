@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import "./Answer.scss";
 
 const Answer = ({id, answer, isCorrect, setIsQuestionAnswered, isQuestionAnswered, setScore, setThrowConfetti}) => {

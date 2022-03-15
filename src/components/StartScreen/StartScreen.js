@@ -4,6 +4,7 @@ import Button from "../Button/Button";
 import "./StartScreen.scss";
 import {motion} from "framer-motion";
 import {useNavigate} from 'react-router-dom';
+import sandglass from "../../assets/images/sandglass.png";
 
 const StartScreen = ({bgMusic}) => {
     const navigate = useNavigate();

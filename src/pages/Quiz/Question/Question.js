@@ -5,8 +5,9 @@ import {AnimatePresence, motion} from "framer-motion";
 import Typewriter from "typewriter-effect";
 import Answer from "../Answer/Answer";
 import Button from "../../../components/Button/Button";
-import Sandglass from "../../../assets/images/sandglass.png";
-import Confetti from 'react-confetti'
+import sandglass from "../../../assets/images/sandglass.png";
+import Confetti from 'react-confetti';
+import handle from "../../../assets/images/handle.png";
 
 const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass, setScore}) => {
 
@@ -67,9 +68,7 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass, set
             animate={{ x: animateQuestionOffScreen, transition: {duration: .5}}}
             onAnimationComplete={animatedOffScreen}
         >
-            {showAnswers && (
-                <Sandglass/>
-            )}
+
 
             <AnimatePresence onExitComplete={onYtIntroExitComplete}>
                 {showYoutubeVid && (
@@ -108,11 +107,17 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass, set
                 {showAnswers && (
                     question.answers.map(
                         answer => { return(
-                            <Answer {...answer} setIsQuestionAnswered={setIsQuestionAnswered} isQuestionAnswered={isQuestionAnswered} setScore={setScore} setThrowConfetti={setThrowConfetti}/>
+                            <Answer key={answer.id} {...answer} setIsQuestionAnswered={setIsQuestionAnswered} isQuestionAnswered={isQuestionAnswered} setScore={setScore} setThrowConfetti={setThrowConfetti}/>
                         )}
                     )
                 )}
             </motion.div>
+
+            <AnimatePresence>
+                {showAnswers && (
+                    <img src={sandglass} className="sandglass" alt={""}/>
+                )}
+            </AnimatePresence>
 
             <AnimatePresence>
                 {isQuestionAnswered && (
@@ -127,7 +132,7 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass, set
                 )}
             </AnimatePresence>
 
-            <Confetti run={throwConfetti} width={800} height={700} recycle={false} numberOfPieces={300} />
+            <Confetti run={throwConfetti} width={window.innerWidth} height={window.innerHeight} recycle={false} numberOfPieces={400} />
 
         </motion.div>
     );
