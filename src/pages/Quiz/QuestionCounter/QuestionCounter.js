@@ -25,26 +25,26 @@ const QuestionCounter = ({showQuestionCounter, questions, setQuizPropsSetupDone,
     return (
         <>
             {showQuestionCounter && (
-            <div className="questionCounter">
-                <motion.ul
-                    variants={variants}
-                    initial="hidden"
-                    animate="show"
-                    onAnimationComplete={onAnimationComplete}
-                >
-                    {
-                        questions.map((question, index) => (
-                            <motion.li
-                                key={question.id}
-                                className={`counter ${currentQuestion === index? 'currentCounter': ''}`}
-                                variants={item}
-                            >
-                                {question.id}
-                            </motion.li>
-                        ))
-                    }
-                </motion.ul>
-            </div>
+                <div className="questionCounter">
+                    <motion.ul
+                        variants={variants}
+                        initial="hidden"
+                        animate="show"
+                        onAnimationComplete={onAnimationComplete}
+                    >
+                        {
+                            questions.map((question, index) => (
+                                <motion.li
+                                    key={question.id}
+                                    className={`counter ${currentQuestion === index? 'currentCounter': ''}`}
+                                    variants={item}
+                                >
+                                    {index + 1}
+                                </motion.li>
+                            ))
+                        }
+                    </motion.ul>
+                </div>
             )}
         </>
     );

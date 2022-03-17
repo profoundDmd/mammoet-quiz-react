@@ -1,0 +1,31 @@
+{
+  "name": "Mammoetquiz",
+  "showYoutubeVideos" : true,
+  "questions" : [
+    {
+      "id": 1,
+      "question":"Welk gebruiksvoorwerp hoort niet thuis in de steentijd en werd pas later ontwikkeld?",
+      "youtubeId": "",
+      "answers": [
+        {
+          "id": 1,
+          "answer": "Zwaard",
+          "isCorrect": true
+        },{
+          "id": 2,
+          "answer": "Bijl",
+          "isCorrect": false
+        },{
+          "id": 3,
+          "answer": "Speer",
+          "isCorrect": false
+        },
+        {
+          "id": 4,
+          "answer": "Mes",
+          "isCorrect": false
+        }
+      ]
+    }
+  ]
+}

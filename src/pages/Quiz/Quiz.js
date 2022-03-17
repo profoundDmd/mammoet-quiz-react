@@ -6,16 +6,21 @@ import Ribbon from "./Ribbon/Ribbon";
 import QuizIntroText from "./QuizIntroText";
 import Scoreboard from "./Scoreboard/Scoreboard";
 import Mammoth from "./Mammoth/Mammoth";
-import questionList from "./questions.json"
+import questionList from "./shortQuestions.json"
 import QuestionCounter from "./QuestionCounter/QuestionCounter";
 import YouTube from "react-youtube";
 import wallPainting from "../../assets/images/wallPainting.jpeg";
 import Question from "./Question/Question";
+import Button from "../../components/Button/Button";
+import {useNavigate} from "react-router-dom";
 
 const Quiz = () => {
     const opts = {
         height: '390', width: '640', playerVars: {autoplay: 1,}, origin: 'http://localhost:3000',
     };
+
+    const navigate = useNavigate();
+
     const [showWallPainting, setShowWallPainting] = useState(true);
     const [showYtIntro, setShowYtIntro] = useState(true);
     const [showText, setShowText] = useState(false);
@@ -42,6 +47,10 @@ const Quiz = () => {
 
     const prepareForQuiz = () => {
         setShowQuizProps(true);
+    }
+
+    const endQuiz = () => {
+        navigate("/mainmenu");
     }
 
     const variants = {
@@ -103,8 +112,16 @@ const Quiz = () => {
                     </motion.div>
                 )}
 
-                {currentQuestion === questionList.questions.length - 1 && (
-                    <div>Je hebt gedaan!</div>
+                {currentQuestion === questionList.questions.length && (
+                    <div className="finishedQuiz">
+                        <span className="congrats">
+                            Gefeliciteerd!
+                        </span>
+                        <br/> Je hebt het einde van de quiz behaald en hebt een score van: <span className="displayScore"> {score} / {questionList.questions.length}</span>
+                        <br/>
+                        Nu kan je op ontdekking in de grot!
+                        <Button text="TERUG" type="stone" className="stopQuiz" clickEvent={endQuiz}/>
+                    </div>
                 )}
 
             </div>

@@ -90,3 +90,22 @@
   top: 110px;
   overflow: hidden;
 }
+
+.congrats, .displayScore {
+  font-size: 85px;
+  text-shadow: 1px 1px 5px #7b4b20;
+  margin: 25px 0;
+  display: inline-block;
+  width: 100%;
+}
+
+.finishedQuiz{
+  position: absolute;
+  top: 100px;
+  font-family: generalFont;
+  font-size: 30px;
+  text-shadow: 1px 1px 5px black;
+  color: orange;
+  width: 500px;
+  text-align: center;
+}

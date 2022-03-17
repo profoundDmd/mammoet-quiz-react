@@ -7,7 +7,6 @@ import Answer from "../Answer/Answer";
 import Button from "../../../components/Button/Button";
 import sandglass from "../../../assets/images/sandglass.png";
 import Confetti from 'react-confetti';
-import handle from "../../../assets/images/handle.png";
 
 const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass, setScore}) => {
 
@@ -19,6 +18,8 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass, set
     const [animateQuestionOffScreen, setAnimateQuestionOffScreen] = useState();
     const [throwConfetti, setThrowConfetti] = useState(false);
 
+    let answers = question.answers;
+
     const opts = {height: '390', width: '640', playerVars: {autoplay: 1,}, origin: 'http://localhost:3000',};
 
     const variants = {
@@ -29,6 +30,11 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass, set
                 staggerChildren: 0.2
             }
         }
+    }
+
+    const item = {
+        hidden: { scale: 0 },
+        show: { scale: 1 }
     }
 
     const onYtIntroEnd = () => {
@@ -98,20 +104,26 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass, set
                 </motion.div>
             )}
 
-            <motion.div
-                variants={variants}
-                initial="hidden"
-                animate="show"
-                className="answers"
-            >
-                {showAnswers && (
-                    question.answers.map(
-                        answer => { return(
-                            <Answer key={answer.id} {...answer} setIsQuestionAnswered={setIsQuestionAnswered} isQuestionAnswered={isQuestionAnswered} setScore={setScore} setThrowConfetti={setThrowConfetti}/>
-                        )}
-                    )
-                )}
-            </motion.div>
+            {showAnswers && (
+                <motion.div
+                    variants={variants}
+                    initial="hidden"
+                    animate="show"
+                    className="answers"
+                >
+                    {
+                        question.answers.map((answer, index) => (
+                            <motion.div
+                                key={answer.id}
+                                className="answerDiv"
+                                variants={item}
+                            >
+                                <Answer key={answer.id} {...answer} setIsQuestionAnswered={setIsQuestionAnswered} isQuestionAnswered={isQuestionAnswered} setScore={setScore} setThrowConfetti={setThrowConfetti}/>
+                            </motion.div>
+                        ))
+                    }
+                </motion.div>
+            )}
 
             <AnimatePresence>
                 {showAnswers && (
