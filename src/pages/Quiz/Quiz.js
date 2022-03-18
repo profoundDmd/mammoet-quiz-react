@@ -113,15 +113,22 @@ const Quiz = () => {
                 )}
 
                 {currentQuestion === questionList.questions.length && (
-                    <div className="finishedQuiz">
+                    <motion.div
+                        initial={{opacity: 0,  }}
+                        animate={{opacity: 1,  }}
+                        transition={{duration: 1}}
+                        className="finishedQuiz"
+                    >
                         <span className="congrats">
                             Gefeliciteerd!
                         </span>
-                        <br/> Je hebt het einde van de quiz behaald en hebt een score van: <span className="displayScore"> {score} / {questionList.questions.length}</span>
+                        <br/>
+                        Je hebt het einde van de quiz behaald en hebt een score van: <span className="displayScore"> {score} / {questionList.questions.length}</span>
                         <br/>
                         Nu kan je op ontdekking in de grot!
+                        <br/> <br/>
                         <Button text="TERUG" type="stone" className="stopQuiz" clickEvent={endQuiz}/>
-                    </div>
+                    </motion.div>
                 )}
 
             </div>
