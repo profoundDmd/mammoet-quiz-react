@@ -33,6 +33,21 @@ const Quiz = () => {
     const [stopButtonDisabledClass, setStopButtonDisabledClass] = useState("disabled");
     const [score, setScore] = useState(0);
 
+    const youtubeOpts = {
+        playerVars: {
+            autoplay: 1,
+            controls: 0,
+            disablekb: 1,
+            fs: 0,
+            loop: 1,
+            modestbranding: 1,
+            rel: 0,
+            mute: 0,
+            origin: 'http://localhost:3000',
+            start: 0
+        },
+    }
+
     const onYtIntroReady = (event) => {
         setShowWallPainting(false);
     }
@@ -73,10 +88,11 @@ const Quiz = () => {
                             <div className="modalBg" />
                             <YouTube
                                 videoId="452kpneADrA"
-                                opts={opts}
+                                opts={youtubeOpts}
                                 onReady={onYtIntroReady}
                                 onEnd={onYtIntroEnd}
-                                className="youtubeVid"/>
+                                className="youtubeVid"
+                            />
                             <motion.img
                                 variants={variants}
                                 animate={showWallPainting ? 'show' : 'hide'}

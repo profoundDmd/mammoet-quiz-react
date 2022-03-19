@@ -20,8 +20,20 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass, set
 
     let answers = question.answers;
 
-    const opts = {height: '390', width: '640', playerVars: {autoplay: 1,}, origin: 'http://localhost:3000',};
-
+    const youtubeOpts = {
+        playerVars: {
+            autoplay: 1,
+            controls: 0,
+            disablekb: 1,
+            fs: 0,
+            loop: 1,
+            modestbranding: 1,
+            rel: 0,
+            mute: 0,
+            origin: 'http://localhost:3000',
+            start: 0
+        },
+    }
     const variants = {
         hidden: {scale: 0},
         show: {
@@ -82,8 +94,9 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass, set
                         <div className="modalBg" />
                         <YouTube
                             videoId="452kpneADrA"
-                            opts={opts}
+                            opts={youtubeOpts}
                             onEnd={onYtIntroEnd}
+                            controls={false}
                             className="youtubeVid"/>
                     </motion.div>
                 )}
