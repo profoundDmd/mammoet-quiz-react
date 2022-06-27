@@ -1,6 +1,7 @@
 import React from 'react';
 import {motion} from "framer-motion";
 import "./QuestionCounter.scss"
+import QuizStep from "../../../utility/QuizStep";
 
 const QuestionCounter = ({showQuestionCounter, questions, setQuizPropsSetupDone, currentQuestion}) => {
     const variants = {

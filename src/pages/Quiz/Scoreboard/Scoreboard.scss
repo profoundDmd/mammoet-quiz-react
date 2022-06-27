@@ -32,6 +32,8 @@
 .stopQuiz{
   width: 170px;
   flex-grow: 3;
+  color: orange;
+  padding-top: 16px;
 
   &.disabled{
     pointer-events: none;

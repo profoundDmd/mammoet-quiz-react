@@ -2,6 +2,7 @@ import React from 'react';
 import {motion} from "framer-motion";
 import mammoth from "../../../assets/images/mammoth.png";
 import "./Mammoth.scss";
+import QuizStep from "../../../utility/QuizStep";
 
 const Mammoth = ({setShowScoreboard}) => {
 

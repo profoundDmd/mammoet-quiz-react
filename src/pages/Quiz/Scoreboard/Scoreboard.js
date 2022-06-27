@@ -28,7 +28,7 @@ const Scoreboard = ({setShowQuestionCounter, showScoreboard, stopButtonDisabledC
                 >
                     <span className="scoreText">Score</span>
                     <span className="score scoreText">{score}</span>
-                    <Button text="STOP" type="stone" className={`stopQuiz ${stopButtonDisabledClass}`} clickEvent={endQuiz}/>
+                    <Button text="STOP" type="wood" className={`stopQuiz ${stopButtonDisabledClass}`} clickEvent={endQuiz}/>
                 </motion.div>
             )}
         </>

@@ -6,7 +6,7 @@ import Ribbon from "./Ribbon/Ribbon";
 import QuizIntroText from "./QuizIntroText";
 import Scoreboard from "./Scoreboard/Scoreboard";
 import Mammoth from "./Mammoth/Mammoth";
-import questionList from "./shortQuestions.json"
+import questionList from "./questions.json"
 import QuestionCounter from "./QuestionCounter/QuestionCounter";
 import YouTube from "react-youtube";
 import wallPainting from "../../assets/images/wallPainting.jpeg";
@@ -15,10 +15,6 @@ import Button from "../../components/Button/Button";
 import {useNavigate} from "react-router-dom";
 
 const Quiz = () => {
-    const opts = {
-        height: '390', width: '640', playerVars: {autoplay: 1,}, origin: 'http://localhost:3000',
-    };
-
     const navigate = useNavigate();
 
     const [showWallPainting, setShowWallPainting] = useState(true);
