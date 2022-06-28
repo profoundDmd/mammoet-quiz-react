@@ -4,12 +4,11 @@ import Button from "../Button/Button";
 import "./StartScreen.scss";
 import {motion} from "framer-motion";
 import {useNavigate} from 'react-router-dom';
-import sandglass from "../../assets/images/sandglass.png";
 
 const StartScreen = ({bgMusic}) => {
     const navigate = useNavigate();
 
-    const clickEvent = () => {
+    const startEvent = () => {
         bgMusic.play();
         navigate("/mainmenu")
     }
@@ -24,7 +23,7 @@ const StartScreen = ({bgMusic}) => {
         >
             <div className="startScreenContent">
                 <MainTitle />
-                <Button type="stone" text="START" clickEvent={clickEvent} />
+                <Button type="stone" text="START" clickEvent={startEvent} />
             </div>
         </motion.div>
     );

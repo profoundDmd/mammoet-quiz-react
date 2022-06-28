@@ -8,26 +8,30 @@
 .counter{
   box-sizing: border-box;
   margin: 5px;
-  padding: 7px 12px;
   color: #e7a449;
   border: none;
-  display: inline-block;
   box-shadow: 0px 0px 6px -1px black;
   background-image: url(../../../assets/images/smallFrame.png);
   background-size: cover;
   font-family: generalFont;
   text-shadow: 2px 2px 1px #131212;
   transition: 0.4s ease;
+  position: relative;
+  height: 32px;
+  width: 32px;
+  padding-top: 7px;
+  display: inline-flex;
+  justify-content: center;
 
   &::before{
-    content: "";
-    position: absolute;
-    width: 28px;
-    height: 15px;
-    background: #ef0a0ad1;
-    opacity: 0.22;
-    margin-left: -10px;
-    margin-top: -6px;
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 15px;
+  background: #ef0a0ad1;
+  opacity: 0.22;
+  margin-left: -10px;
+  margin-top: -6px;
   }
 }
 
@@ -38,4 +42,19 @@
 
 .answerDiv{
   display: inline-block;
+}
+
+.questionDone{
+
+  &::after{
+  content: "";
+  position: absolute;
+  width: 100%;
+  left: 0;
+  height: 100%;
+  background: black;
+  opacity: 0.4;
+  top: 0;
+  box-shadow: 0px 0px 2px 1px #000000b5;
+  }
 }

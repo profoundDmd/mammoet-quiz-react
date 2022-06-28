@@ -26,7 +26,7 @@
 .bigFrameContent::before {
   content: "";
   background-image: url(../../../src/assets/images/bgWood.jpeg);
-  opacity: 0.35;
+  opacity: 0.4;
   left: 0;
   right: 0;
   position: absolute;
@@ -88,6 +88,7 @@
 .quizQuestions{
   display: flex;
   width: 550px;
+  height: 520px;
   position: relative;
   top: 110px;
   overflow: hidden;

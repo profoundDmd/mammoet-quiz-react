@@ -137,9 +137,9 @@ const Quiz = () => {
                         <br/>
                         Je hebt het einde van de quiz behaald en hebt een score van: <span className="displayScore"> {score} / {questionList.questions.length}</span>
                         <br/>
-                        Nu kan je op ontdekking in de grot!
+                        Nu kan je op ontdekking in de grot!!
                         <br/> <br/>
-                        <Button text="TERUG" type="stone" className="stopQuiz" clickEvent={endQuiz}/>
+                        <Button text="TERUG" type="wood" className="stopQuiz" clickEvent={endQuiz}/>
                     </motion.div>
                 )}
 

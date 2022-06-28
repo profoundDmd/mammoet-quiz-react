@@ -1,7 +1,6 @@
 import React from 'react';
 import {motion} from "framer-motion";
 import "./QuestionCounter.scss"
-import QuizStep from "../../../utility/QuizStep";
 
 const QuestionCounter = ({showQuestionCounter, questions, setQuizPropsSetupDone, currentQuestion}) => {
     const variants = {
@@ -37,10 +36,10 @@ const QuestionCounter = ({showQuestionCounter, questions, setQuizPropsSetupDone,
                             questions.map((question, index) => (
                                 <motion.li
                                     key={question.id}
-                                    className={`counter ${currentQuestion === index? 'currentCounter': ''}`}
+                                    className={`counter ${currentQuestion === index? 'currentCounter': ''} ${currentQuestion > index? 'questionDone': ''}`}
                                     variants={item}
                                 >
-                                    {index + 1}
+                                    {question.id}
                                 </motion.li>
                             ))
                         }

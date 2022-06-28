@@ -152,7 +152,7 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass, set
                         transition={{duration: 1, type: "spring"}}
                         className="nextQuestion"
                     >
-                        <Button type="stone" text="Volgende" className="nextQuestionButton" clickEvent={nextQuestion} />
+                        <Button type="wood" text="Volgende" className="nextQuestionButton quizTextColor" clickEvent={nextQuestion} />
                     </motion.div>
                 )}
             </AnimatePresence>

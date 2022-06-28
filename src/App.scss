@@ -44,6 +44,7 @@ table {
 
 :root {
   --main-bg-color: #31cfc3;
+  --quiz-text-color: #ffe5c1;
 }
 
 /******************************* end reset */
@@ -94,6 +95,10 @@ body{
   animation: animationShake 0.60s;
 }
 
+.quizTextColor{
+  color: var(--quiz-text-color);
+}
+
 /*********************************** fonts */
 @font-face {
   font-family: gameria;
@@ -133,7 +138,7 @@ body{
 
 @keyframes eyeBlink{
   0%  {height: 2px}
-  7% { height: 32px}
+  7% { height: 28px}
   14% { height: 2px}
 }
 

@@ -33,7 +33,7 @@ const QuizIntroText = ({setShowText}) => {
                     animate={{opacity: 1,  y: 0}}
                     transition={{duration: 0.7, type: "spring"}}
                 >
-                    <Button text="START" type="stone" clickEvent={startClicked}/>
+                    <Button text="START" type="wood" className="quizTextColor" clickEvent={startClicked}/>
                 </motion.div>
             )}
 
