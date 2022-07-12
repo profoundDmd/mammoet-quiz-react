@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Title from "../Title/Title";
 import Button from "../Button/Button";
 import "./MainMenu.scss"
@@ -6,23 +6,27 @@ import {motion} from "framer-motion";
 import {useNavigate} from 'react-router-dom';
 import stoneFall from "../../assets/sounds/stoneFall.mp3";
 import stoneGrind from "../../assets/sounds/stoneGrind.mp3";
+import {diminishSound, stopSound} from "../../utility/AudioPlayer";
 
-const MainMenu = () => {
+const MainMenu = ({bgMusic}) => {
     const navigate = useNavigate();
-    const stoneGrindSE = new Audio(stoneGrind);
-    const stoneFallSE = new Audio(stoneFall);
+    const [stoneGrindSE] = useState(new Audio(stoneGrind));
+    const [stoneFallSE] = useState(new Audio(stoneFall));
     const [shake, setShake] = useState("");
 
     const goToStartScreen = () => {
-        navigate("/")
+        navigate("/");
+        stopSound(bgMusic);
     }
 
     const goToMicroscope = () => {
-        navigate("/microscope")
+        navigate("/microscope");
+        diminishSound(bgMusic, 0.2);
     }
 
     const goToQuiz = () => {
-        navigate("/quiz")
+        navigate("/quiz");
+        stopSound(bgMusic);
     }
 
     const onAnimationStart = () => {
@@ -38,6 +42,12 @@ const MainMenu = () => {
             }
         }, 100);
     }
+
+    useEffect(() => {
+        bgMusic.volume = 1;
+        bgMusic.play();
+    }, [bgMusic]);
+
 
     return (
         <motion.div

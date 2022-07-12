@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Webcam from "react-webcam";
 import "./Microscope.scss"
 import Button from "../../components/Button/Button";
@@ -6,21 +6,22 @@ import {useNavigate} from "react-router-dom";
 import {motion} from "framer-motion";
 import handle from "../../assets/images/handle.png"
 import turnOnAudio from "../../assets/sounds/microscope.mp3";
+import {turnUpSound} from "../../utility/AudioPlayer";
 
 const Microscope = ({bgMusic}) => {
     const navigate = useNavigate();
 
-    const turnOn = new Audio(turnOnAudio);
+    const [turnOn] = useState(new Audio(turnOnAudio));
 
     const goToMainMenu = () => {
         navigate("/mainmenu");
+        turnUpSound(bgMusic, 1);
     }
 
     useEffect(() => {
-        bgMusic.volume = 0.3;
-        bgMusic.play();
         turnOn.play();
-    }, []);
+
+    }, [turnOn]);
 
     return (
         <div className="microscope">

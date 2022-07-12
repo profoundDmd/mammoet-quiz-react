@@ -7,8 +7,9 @@ import Answer from "../Answer/Answer";
 import Button from "../../../components/Button/Button";
 import sandglass from "../../../assets/images/sandglass.png";
 import Confetti from 'react-confetti';
+import {diminishSound, turnUpSound} from "../../../utility/AudioPlayer";
 
-const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass, setScore}) => {
+const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass, setScore, quizMusic}) => {
 
     const [showYoutubeVid, setShowYoutubeVid] = useState(true);
     const [showQuestion, setShowQuestion] = useState(false);
@@ -17,8 +18,6 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass, set
     const [animateQuestionText, setAnimateQuestionText] = useState();
     const [animateQuestionOffScreen, setAnimateQuestionOffScreen] = useState();
     const [throwConfetti, setThrowConfetti] = useState(false);
-
-    let answers = question.answers;
 
     const youtubeOpts = {
         playerVars: {
@@ -49,8 +48,13 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass, set
         show: { scale: 1 }
     }
 
+    const onYtIntroReady = () => {
+        diminishSound(quizMusic, 0.1);
+    }
+
     const onYtIntroEnd = () => {
         setShowYoutubeVid(false);
+        turnUpSound(quizMusic, 0.6);
     }
 
     const onYtIntroExitComplete = () => {
@@ -87,15 +91,15 @@ const Question = ({question, setCurrentQuestion, setStopButtonDisabledClass, set
             onAnimationComplete={animatedOffScreen}
         >
 
-
             <AnimatePresence onExitComplete={onYtIntroExitComplete}>
                 {showYoutubeVid && (
                     <motion.div className="ytQuestionIntro" exit={{ opacity: 0, transition: {duration: 2.5} }}>
                         <div className="modalBg" />
                         <YouTube
-                            videoId="452kpneADrA"
+                            videoId={question.youtubeId}
                             opts={youtubeOpts}
                             onEnd={onYtIntroEnd}
+                            onReady={onYtIntroReady}
                             controls={false}
                             className="youtubeVid"/>
                     </motion.div>

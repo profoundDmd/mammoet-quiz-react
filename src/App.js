@@ -13,8 +13,7 @@ import Clouds from "./components/Clouds/Clouds";
 function App() {
 
     /* Sounds */
-    const [bgMusicVolume, setBgMusicVolume] = useState(1);
-    const bgMusic = new Audio(happyBackgroundMusic);
+    const [bgMusic] = useState(new Audio(happyBackgroundMusic));
     bgMusic.loop = true;
 
     const location = useLocation();
@@ -25,7 +24,7 @@ function App() {
               <Clouds/>
               <AnimatePresence exitBeforeEnter>
                   <Routes location={location} key={location.pathname}>
-                      <Route exact path="/" element={<StartScreen bgMusic={bgMusic} />} />
+                      <Route exact path="/" element={<StartScreen />} />
                       <Route path="/mainmenu" element={<MainMenu bgMusic={bgMusic}/>} />
                       <Route path="/microscope" element={<Microscope bgMusic={bgMusic}/>} />
                       <Route path="/quiz" element={<Quiz  />} />

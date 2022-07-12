@@ -3,8 +3,9 @@ import {motion} from "framer-motion";
 import "./Scoreboard.scss";
 import Button from "../../../components/Button/Button";
 import {useNavigate} from "react-router-dom";
+import {stopSound} from "../../../utility/AudioPlayer";
 
-const Scoreboard = ({setShowQuestionCounter, showScoreboard, stopButtonDisabledClass, score}) => {
+const Scoreboard = ({setShowQuestionCounter, showScoreboard, stopButtonDisabledClass, score, quizMusic}) => {
 
     const navigate = useNavigate();
 
@@ -13,6 +14,7 @@ const Scoreboard = ({setShowQuestionCounter, showScoreboard, stopButtonDisabledC
     }
 
     const endQuiz = () => {
+        stopSound(quizMusic);
         navigate("/mainmenu");
     }
 

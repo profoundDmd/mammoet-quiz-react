@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "./Quiz.scss";
 import {AnimatePresence, motion} from "framer-motion";
 import bigFrameBorder from "../../assets/images/bigFrame.png";
@@ -13,6 +13,10 @@ import wallPainting from "../../assets/images/wallPainting.jpeg";
 import Question from "./Question/Question";
 import Button from "../../components/Button/Button";
 import {useNavigate} from "react-router-dom";
+import quizMusicAudio from "../../assets/sounds/quizMusic.mp3";
+import applauseAudio from "../../assets/sounds/applause.mp3";
+import tadaAudio from "../../assets/sounds/tada.mp3";
+import {stopSound} from "../../utility/AudioPlayer";
 
 const Quiz = () => {
     const navigate = useNavigate();
@@ -21,6 +25,7 @@ const Quiz = () => {
     const [showYtIntro, setShowYtIntro] = useState(true);
     const [showText, setShowText] = useState(false);
     const [showQuizProps, setShowQuizProps] = useState(false);
+    const [quizMusic] = useState(new Audio(quizMusicAudio));
 
     const [showScoreboard, setShowScoreboard] = useState(false);
     const [showQuestionCounter, setShowQuestionCounter] = useState(false);
@@ -62,12 +67,24 @@ const Quiz = () => {
 
     const endQuiz = () => {
         navigate("/mainmenu");
+        stopSound(quizMusic);
     }
 
     const variants = {
         hide: { opacity: 0, transition: { duration: 4 } },
         show: { opacity: 1, }
     };
+
+    const scoreScreenAnimation = () => {
+        new Audio(applauseAudio).play();
+        new Audio(tadaAudio).play();
+    }
+
+    useEffect(() => {
+        quizMusic.loop = true;
+        quizMusic.volume = 0.6
+    }, [quizMusic]);
+
 
     return (
         <motion.div
@@ -99,14 +116,14 @@ const Quiz = () => {
                 </AnimatePresence>
 
                 <AnimatePresence onExitComplete={prepareForQuiz}>
-                    {showText && (<QuizIntroText setShowText={setShowText}/>)}
+                    {showText && (<QuizIntroText setShowText={setShowText} quizMusic={quizMusic}/>)}
                 </AnimatePresence>
 
                 <AnimatePresence>
                     {showQuizProps && (
                         <>
                             <Mammoth setShowScoreboard={setShowScoreboard}/>
-                            <Scoreboard setShowQuestionCounter={setShowQuestionCounter} showScoreboard={showScoreboard} stopButtonDisabledClass={stopButtonDisabledClass} score={score} />
+                            <Scoreboard setShowQuestionCounter={setShowQuestionCounter} showScoreboard={showScoreboard} stopButtonDisabledClass={stopButtonDisabledClass} score={score} quizMusic={quizMusic}/>
                             <QuestionCounter questions={questionList.questions} showQuestionCounter={showQuestionCounter} setQuizPropsSetupDone={setQuizPropsSetupDone} currentQuestion={currentQuestion}/>
                         </>
                     )}
@@ -117,7 +134,7 @@ const Quiz = () => {
                         {
                             questionList.questions.map((question, index) => {
                                 return index === currentQuestion && (
-                                    <Question question={question} setCurrentQuestion={setCurrentQuestion} setStopButtonDisabledClass={setStopButtonDisabledClass} setScore={setScore} key={`question_${question.id}`}/>
+                                    <Question question={question} setCurrentQuestion={setCurrentQuestion} setStopButtonDisabledClass={setStopButtonDisabledClass} setScore={setScore} key={`question_${question.id}`} quizMusic={quizMusic}/>
                                 )
                             })
                         }
@@ -130,6 +147,7 @@ const Quiz = () => {
                         animate={{opacity: 1,  }}
                         transition={{duration: 1}}
                         className="finishedQuiz"
+                        onAnimationStart={scoreScreenAnimation}
                     >
                         <span className="congrats">
                             Gefeliciteerd!

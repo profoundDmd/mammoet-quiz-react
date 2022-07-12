@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import {motion} from "framer-motion";
 import Typewriter from "typewriter-effect";
 import Button from "../../components/Button/Button";
+import startQuizAudio from "../../assets/sounds/startQuiz.mp3";
 
-const QuizIntroText = ({setShowText}) => {
+const QuizIntroText = ({setShowText, quizMusic}) => {
 
     const [showButton, setShowButton] = useState(false);
 
@@ -12,11 +13,13 @@ const QuizIntroText = ({setShowText}) => {
     }
 
     const startClicked = () => {
+        new Audio(startQuizAudio).play();
+        quizMusic.play();
         setShowText((showText) => !showText);
     }
 
-    //const introText = "Hallo iedereen, welkom op de grote Mammoetquiz van het Vleeshuismuseum. Deze quiz gaat over de mammoet en de tijd waarin de mammoet leefde. Willen jullie een leuke en spannende quiz spelen? Druk op de knop om te starten!"
-    const introText = "test 1 2 3 ";
+    const introText = "Hallo iedereen, welkom op de grote Mammoetquiz van het Vleeshuismuseum. Deze quiz gaat over de mammoet en de tijd waarin de mammoet leefde. Willen jullie een leuke en spannende quiz spelen? Druk op de knop om te starten!"
+    //const introText = "test 1 2 3 ";
 
     return (
         <motion.div className="textIntro" exit={{ opacity: 0, transition: {duration: 2.5}}}>

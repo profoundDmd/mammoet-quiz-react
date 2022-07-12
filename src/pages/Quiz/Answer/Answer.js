@@ -1,5 +1,8 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import "./Answer.scss";
+import popWoodAudio from "../../../assets/sounds/popWood.mp3";
+import wrongAnswerAudio from "../../../assets/sounds/wrongAnswer.mp3";
+import startQuizAudio from "../../../assets/sounds/startQuiz.mp3";
 
 const Answer = ({id, answer, isCorrect, setIsQuestionAnswered, isQuestionAnswered, setScore, setThrowConfetti}) => {
     const [flipClass, setFlipClass] = useState("");
@@ -9,6 +12,9 @@ const Answer = ({id, answer, isCorrect, setIsQuestionAnswered, isQuestionAnswere
         if(isCorrect && !isQuestionAnswered){
             setScore(score => ++score);
             setThrowConfetti(true);
+            new Audio(startQuizAudio).play();
+        }else if(!isCorrect && !isQuestionAnswered){
+            new Audio(wrongAnswerAudio).play();
         }
         setIsQuestionAnswered(true);
     }
@@ -21,6 +27,11 @@ const Answer = ({id, answer, isCorrect, setIsQuestionAnswered, isQuestionAnswere
     const flip = () => {
         setFlipClass("flip");
     }
+
+    useEffect(() => {
+        new Audio(popWoodAudio).play();
+    }, []);
+
 
     return (
         <div key={`answer_${id}`} className="answer" onClick={onClick} variants={item}>
